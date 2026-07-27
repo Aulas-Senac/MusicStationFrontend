@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg\+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+    <!-- Header com navegação -->
+    <header style="border-bottom: 1px solid var(--border-color); background: var(--bg-color);">
+        <nav class="container nav-bar">
+            <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station"></a></div>
+            <ul class="menu-principal">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="profissionais.html">Profissionais</a></li>
+                <li><a href="instrumentos.html">Instrumentos</a></li>
+            </ul>
+            <div class="botoes-auth"></div>
+        </nav>
+    </header>
+
+    <div class="container painel-layout">
+        <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="profile-card">
+            <div class="profile-avatar">
+                <i class="ph ph-music-note"></i>
+            </div>
+            <div class="profile-info">
+                <span class="profile-name" id="user-name">João</span>
+                <span class="profile-badge" id="user-badge"><i class="ph-fill ph-briefcase"></i> Empresa</span>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <a href="painel.html" class="nav-item active">
+                <i class="ph ph-squares-four"></i> Visão geral
+            </a>
+            <a href="meus-itens.html" class="nav-item"><i class="ph ph-shopping-bag"></i> <span id="lbl-meus-itens">Meus pedidos</span></a>
+            <a href="meus-anuncios.html" class="nav-item">
+                <i class="ph ph-megaphone"></i> Meus anúncios
+            </a>
+            <a href="historico.html" class="nav-item">
+                <i class="ph ph-calendar-blank"></i> <span id="lbl-solicitacoes">Solicitações</span>
+            </a>
+        </nav>
+
+        <div class="nav-bottom">
+            <a href="../index.html" class="nav-item">
+                <i class="ph ph-house"></i> Ver site
+            </a>
+            <a href="#" class="nav-item logout" onclick="doLogout()">
+                <i class="ph ph-sign-out"></i> Sair
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <h1>Olá, <span id="header-name">João</span>! 👋</h1>
+                <p id="header-subtitle">Gerencie seu catálogo de instrumentos e locações.</p>
+            </div>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon purple"><i class="ph ph-guitar"></i></div>
+                <div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label" id="metric-1-lbl">Instrumentos</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon green"><i class="ph ph-check-circle"></i></div>
+                <div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label" id="metric-2-lbl">Disponíveis</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon yellow"><i class="ph ph-clock"></i></div>
+                <div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label" id="metric-3-lbl">Locações pendentes</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-section">
+            <div class="recent-header" id="recent-lbl">Locações recentes</div>
+            
+            <div class="empty-state">
+                <div class="empty-icon"><i class="ph ph-calendar-blank"></i></div>
+                <h3 id="empty-title">Sem locações</h3>
+                <p id="empty-desc">Quando clientes solicitarem seus instrumentos, aparecerão aqui.</p>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <script src="../js/auth-simulator.js"></script>
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Personaliza o painel baseado no profile real logado
+            const profile = localStorage.getItem('ms_mock_profile') || 'empresa'; // fallback
+            
+            const name = "João"; // Pode vir de uma variável
+            document.getElementById('user-name').textContent = name;
+            document.getElementById('header-name').textContent = name;
+
+            const badge = document.getElementById('user-badge');
+            
+            // --- SIDEBAR DEDUP FIX ---
+            const linkPedidos = document.querySelector('a[href="meus-itens.html"]');
+            const linkAnuncios = document.querySelector('a[href="meus-anuncios.html"]');
+            
+            if(profile === 'empresa' || profile === 'profissional') {
+                if(linkPedidos) linkPedidos.style.display = 'none'; // Hide Meus Pedidos
+                if(profile === 'profissional' && linkAnuncios) linkAnuncios.innerHTML = '<i class="ph ph-briefcase"></i> Meus serviços';
+            } else {
+                if(linkAnuncios) linkAnuncios.style.display = 'none'; // Hide Meus Anúncios para clientes normais (simplifica menu)
+            }
+            
+            
+            if(profile === 'empresa') {
+                badge.innerHTML = '<i class="ph-fill ph-storefront"></i> Empresa';
+                // lbl-meus-itens renaming removed
+                document.getElementById('lbl-solicitacoes').textContent = 'Locações';
+                document.getElementById('header-subtitle').textContent = 'Gerencie seu catálogo de instrumentos e locações.';
+                
+                document.getElementById('metric-1-lbl').textContent = 'Faturamento (Semana)';
+                document.querySelectorAll('.metric-value')[0].textContent = 'R$ 1.560,00';
+                
+                document.getElementById('metric-2-lbl').textContent = 'Locações Ativas';
+                document.querySelectorAll('.metric-value')[1].textContent = '3';
+                
+                document.getElementById('metric-3-lbl').textContent = 'Locações pendentes';
+                document.querySelectorAll('.metric-value')[2].textContent = '1';
+                
+                window.updateFaturamento = function(dia, valor, locacoes, pendentes) {
+                    document.getElementById('metric-1-lbl').textContent = 'Faturamento (' + dia + ')';
+                    document.querySelectorAll('.metric-value')[0].textContent = valor;
+                    document.querySelectorAll('.metric-value')[1].textContent = locacoes;
+                    document.querySelectorAll('.metric-value')[2].textContent = pendentes;
+                };
+                
+                document.querySelector('.recent-section').innerHTML = `
+                    <div class="recent-header">Desempenho Semanal <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal; margin-left: 1rem;">(Passe o mouse ou clique nas barras)</span></div>
+                    <div class="chart-flex-container">
+                        
+                        <div class="chart-bar" style="background: var(--primary-color); height: 40%;" onclick="updateFaturamento('Segunda', 'R$ 150,00', '1', '0')">
+                            <span class="tooltip">R$ 150,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Seg</span>
+                        </div>
+                        
+                        <div class="chart-bar" style="background: var(--primary-light); height: 70%;" onclick="updateFaturamento('Terça', 'R$ 280,00', '2', '1')">
+                            <span class="tooltip">R$ 280,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Ter</span>
+                        </div>
+                        
+                        <div class="chart-bar" style="background: var(--primary-color); height: 30%;" onclick="updateFaturamento('Quarta', 'R$ 90,00', '1', '0')">
+                            <span class="tooltip">R$ 90,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Qua</span>
+                        </div>
+                        
+                        <div class="chart-bar" style="background: var(--primary-light); height: 90%;" onclick="updateFaturamento('Quinta', 'R$ 380,00', '4', '2')">
+                            <span class="tooltip">R$ 380,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Qui</span>
+                        </div>
+                        
+                        <div class="chart-bar" style="background: var(--primary-color); height: 60%;" onclick="updateFaturamento('Sexta', 'R$ 210,00', '2', '0')">
+                            <span class="tooltip">R$ 210,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Sex</span>
+                        </div>
+                        
+                        <div class="chart-bar" style="background: var(--primary-color); height: 100%;" onclick="updateFaturamento('Sábado', 'R$ 450,00', '5', '1')">
+                            <span class="tooltip">R$ 450,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Sáb</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: flex-end; margin-bottom: 2rem;">
+                         <button id="btn-reset-chart" class="btn-secondary btn-sm" onclick="resetChart()" style="background: transparent; border-color: rgba(255,255,255,0.1); cursor: pointer; transition: all 0.2s;"><i id="reset-icon" class="ph ph-arrows-counter-clockwise"></i> Ver total da semana</button>
+                    </div>
+
+                    <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 8px; padding: 1.5rem; display: flex; align-items: center; gap: 1rem; color: #22c55e;">
+                        <i class="ph-fill ph-trend-up" style="font-size: 2rem;"></i>
+                        <div>
+                            <strong style="font-size: 1.1rem;">Ótimo resultado!</strong>
+                            <p style="margin: 0; font-size: 0.95rem; margin-top: 0.2rem;">Sua receita cresceu 15% em relação à semana passada. Continue assim!</p>
+                        </div>
+                    </div>
+                `;
+                
+                window.resetChart = function() {
+                    updateFaturamento('Semana', 'R$ 1.560,00', '3', '1');
+                    const btn = document.getElementById('btn-reset-chart');
+                    const icon = document.getElementById('reset-icon');
+                    
+                    icon.classList.add('ph-spin');
+                    btn.style.background = 'rgba(255,255,255,0.05)';
+                    
+                    setTimeout(() => {
+                        icon.classList.remove('ph-spin');
+                        btn.style.background = 'transparent';
+                    }, 500);
+                };
+            }
+            else if (profile === 'profissional') {
+                badge.innerHTML = '<i class="ph-fill ph-briefcase"></i> Profissional';
+                
+                document.getElementById('lbl-solicitacoes').textContent = 'Pedidos';
+                document.getElementById('header-subtitle').textContent = 'Gerencie seus serviços e pedidos de clientes.';
+                
+                document.getElementById('metric-1-lbl').textContent = 'Faturamento (Mês)';
+                document.querySelectorAll('.metric-value')[0].textContent = 'R$ 1.200,00';
+                
+                document.getElementById('metric-2-lbl').textContent = 'Serviços Hoje';
+                document.querySelectorAll('.metric-value')[1].textContent = '2';
+                
+                document.getElementById('metric-3-lbl').textContent = 'Aguardando Aprovação';
+                document.querySelectorAll('.metric-value')[2].textContent = '4';
+                
+                document.querySelector('.recent-section').innerHTML = `
+                    <div class="recent-header">Sua Agenda de Hoje</div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; cursor: pointer;">
+                            <div>
+                                <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.3rem;">Regulagem de Violão Clássico</strong>
+                                <span style="font-size: 0.9rem; color: var(--text-muted);"><i class="ph ph-user"></i> Cliente: Marcos Silva</span>
+                            </div>
+                            <div style="text-align: right;">
+                                <span style="display: block; font-weight: bold; color: var(--primary-light); font-size: 1.2rem;">14:00</span>
+                                <span style="font-size: 0.8rem; background: rgba(234, 179, 8, 0.15); color: #eab308; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; margin-top: 0.4rem; font-weight: 600;">Pendente</span>
+                            </div>
+                        </div>
+                        <div style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; cursor: pointer;">
+                            <div>
+                                <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.3rem;">Troca de Trastes - Les Paul</strong>
+                                <span style="font-size: 0.9rem; color: var(--text-muted);"><i class="ph ph-user"></i> Cliente: Ana Costa</span>
+                            </div>
+                            <div style="text-align: right;">
+                                <span style="display: block; font-weight: bold; color: var(--primary-light); font-size: 1.2rem;">16:30</span>
+                                <span style="font-size: 0.8rem; background: rgba(34, 197, 94, 0.15); color: #22c55e; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; margin-top: 0.4rem; font-weight: 600;">Confirmado</span>
+                            </div>
+                        </div>
+                    </div>      
+                `;
+                
+                const perfSection = document.createElement('div');
+                perfSection.className = 'recent-section';
+                perfSection.style.marginBottom = '2.5rem';
+                perfSection.innerHTML = `
+                    <div class="recent-header">Desempenho Semanal <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal; margin-left: 1rem;">(Passe o mouse ou clique nas barras)</span></div>
+                    <div style="display: flex; gap: 1.5rem; align-items: flex-end; height: 160px; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem; margin-top: 3rem;">
+                        
+                        <div class="chart-bar" style="background: var(--primary-color); height: 40%;" onclick="updateFaturamento('Segunda', 'R$ 150,00', '1', '0')">
+                            <span class="tooltip">R$ 150,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Seg</span>
+                        </div>
+                        
+                        <div class="chart-bar" style="background: var(--primary-light); height: 70%;" onclick="updateFaturamento('Terça', 'R$ 280,00', '2', '1')">
+                            <span class="tooltip">R$ 280,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Ter</span>
+                        </div>
+                        
+                        <div class="chart-bar" style="background: var(--primary-color); height: 30%;" onclick="updateFaturamento('Quarta', 'R$ 90,00', '1', '0')">
+                            <span class="tooltip">R$ 90,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Qua</span>
+                        </div>
+                        
+                        <div class="chart-bar" style="background: var(--primary-light); height: 90%;" onclick="updateFaturamento('Quinta', 'R$ 380,00', '4', '2')">
+                            <span class="tooltip">R$ 380,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Qui</span>
+                        </div>
+                        
+                        <div class="chart-bar" style="background: var(--primary-color); height: 60%;" onclick="updateFaturamento('Sexta', 'R$ 210,00', '2', '0')">
+                            <span class="tooltip">R$ 210,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Sex</span>
+                        </div>
+                        
+                        <div class="chart-bar" style="background: var(--primary-color); height: 100%;" onclick="updateFaturamento('Sábado', 'R$ 450,00', '5', '1')">
+                            <span class="tooltip">R$ 450,00</span>
+                            <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-muted);">Sáb</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: flex-end; margin-bottom: 2rem;">
+                         <button id="btn-reset-chart-prof" class="btn-secondary btn-sm" onclick="resetChartProf()" style="background: transparent; border-color: rgba(255,255,255,0.1); cursor: pointer; transition: all 0.2s;"><i id="reset-icon-prof" class="ph ph-arrows-counter-clockwise"></i> Ver total da semana</button>
+                    </div>
+
+                    <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 8px; padding: 1.5rem; display: flex; align-items: center; gap: 1rem; color: #22c55e;">
+                        <i class="ph-fill ph-trend-up" style="font-size: 2rem;"></i>
+                        <div>
+                            <strong style="font-size: 1.1rem;">Ótimo resultado!</strong>
+                            <p style="margin: 0; font-size: 0.95rem; margin-top: 0.2rem;">Sua receita cresceu 15% em relação à semana passada. Continue assim!</p>
+                        </div>
+                    </div>
+                `;
+                const mainContent = document.querySelector('main.main-content');
+                mainContent.insertBefore(perfSection, document.querySelector('.recent-section'));
+
+                window.updateFaturamento = function(dia, valor, locacoes, pendentes) {
+                    document.getElementById('metric-1-lbl').textContent = 'Faturamento (' + dia + ')';
+                    document.querySelectorAll('.metric-value')[0].textContent = valor;
+                    document.querySelectorAll('.metric-value')[1].textContent = locacoes;
+                    document.querySelectorAll('.metric-value')[2].textContent = pendentes;
+                };
+
+                window.resetChartProf = function() {
+                    updateFaturamento('Mês', 'R$ 1.200,00', '2', '4');
+                    const btn = document.getElementById('btn-reset-chart-prof');
+                    const icon = document.getElementById('reset-icon-prof');
+                    
+                    icon.classList.add('ph-spin');
+                    btn.style.background = 'rgba(255,255,255,0.05)';
+                    
+                    setTimeout(() => {
+                        icon.classList.remove('ph-spin');
+                        btn.style.background = 'transparent';
+                    }, 500);
+                };
+            }
+            else {
+                // Cliente
+                badge.innerHTML = '<i class="ph-fill ph-user"></i> Cliente';
+                badge.style.color = '#8b5cf6';
+                badge.style.background = 'rgba(109, 40, 217, 0.15)';
+                
+                // lbl-meus-itens renaming removed
+                document.getElementById('lbl-solicitacoes').textContent = 'Histórico';
+                document.getElementById('header-subtitle').textContent = 'Acompanhe seus aluguéis e serviços solicitados.';
+                
+                document.getElementById('metric-1-lbl').textContent = 'Pedidos em andamento';
+                document.querySelectorAll('.metric-value')[0].textContent = '2';
+                
+                document.getElementById('metric-2-lbl').textContent = 'Serviços agendados';
+                document.querySelectorAll('.metric-value')[1].textContent = '1';
+                
+                document.getElementById('metric-3-lbl').textContent = 'Aguardando avaliação';
+                document.querySelectorAll('.metric-value')[2].textContent = '0';
+                
+                document.querySelector('.recent-section').innerHTML = `
+                    <div class="recent-header">Atividades Recentes</div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; cursor: pointer;" onclick="window.location.href='meus-itens.html'">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 50px; height: 50px; border-radius: 8px; background: rgba(109, 40, 217, 0.15); display: flex; align-items: center; justify-content: center; color: var(--primary-light);">
+                                    <i class="ph ph-briefcase" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <div>
+                                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.3rem;">Regulagem Completa</strong>
+                                    <span style="font-size: 0.9rem; color: var(--text-muted);"><i class="ph ph-user"></i> Profissional: Rafael Mendes</span>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <span style="font-size: 0.8rem; background: rgba(34, 197, 94, 0.15); color: #22c55e; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; font-weight: 600;">Em andamento</span>
+                            </div>
+                        </div>
+                        
+                        <div style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; cursor: pointer;" onclick="window.location.href='meus-itens.html'">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 50px; height: 50px; border-radius: 8px; background: rgba(34, 197, 94, 0.15); display: flex; align-items: center; justify-content: center; color: #22c55e;">
+                                    <i class="ph ph-guitar" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <div>
+                                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.3rem;">Fender Stratocaster Player</strong>
+                                    <span style="font-size: 0.9rem; color: var(--text-muted);"><i class="ph ph-storefront"></i> Locador: SoundHouse SP</span>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <span style="font-size: 0.8rem; background: rgba(234, 179, 8, 0.15); color: #eab308; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; font-weight: 600;">Aguardando Retirada</span>
+                                <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem;">10 a 12 de Agosto</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    </script>
+    <script src="../js/interactions.js"></script>
+</body>
+</html>
+

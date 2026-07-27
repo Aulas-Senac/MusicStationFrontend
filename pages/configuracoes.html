@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/forms.css">
+</head>
+<body>
+
+    <!-- Header será gerenciado pelo auth-simulator.js -->
+    <header style="border-bottom: 1px solid var(--border-color); background: var(--bg-color);">
+        <nav class="container nav-bar">
+            <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station"></a></div>
+            <ul class="menu-principal">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="profissionais.html">Profissionais</a></li>
+                <li><a href="instrumentos.html">Instrumentos</a></li>
+            </ul>
+            <div class="botoes-auth"></div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="config-layout">
+            <aside>
+                <nav class="config-nav">
+                    <a href="#" class="config-nav-item active" id="nav-perfil" onclick="switchTab('perfil')"><i class="ph ph-user"></i> Meu Perfil</a>
+                    <a href="#" class="config-nav-item" id="nav-seguranca" onclick="switchTab('seguranca')"><i class="ph ph-lock-key"></i> Segurança e Senha</a>
+                    <a href="#" class="config-nav-item" id="nav-notificacoes" onclick="switchTab('notificacoes')"><i class="ph ph-bell"></i> Notificações</a>
+                    <a href="#" class="config-nav-item" id="nav-pagamentos" onclick="switchTab('pagamentos')"><i class="ph ph-credit-card"></i> Pagamentos</a>
+                </nav>
+            </aside>
+            
+            <div id="tab-perfil" class="config-content" style="display: block;">
+                <h2>Informações Pessoais</h2>
+                
+                <div class="avatar-upload">
+                    <div class="avatar-circle">J</div>
+                    <div>
+                        <button class="btn-secondary" style="margin-bottom: 0.5rem;"><i class="ph ph-upload-simple"></i> Alterar Foto</button>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">JPG, GIF ou PNG. Tamanho máximo de 5MB.</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nome Completo</label>
+                        <input type="text" value="João Silva">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" value="joao@exemplo.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="text" value="(11) 98765-4321">
+                    </div>
+                    <div class="form-group">
+                        <label>Localização</label>
+                        <input type="text" value="São Paulo, SP">
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label>Biografia / Sobre mim</label>
+                    <input type="text" value="Apaixonado por música e guitarrista nas horas vagas." style="height: 100px;">
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+                    <a href="painel.html" class="btn-link">Cancelar</a>
+                    <button class="btn-primary" onclick="showToast('Perfil atualizado com sucesso!');">Salvar Alterações</button>
+                </div>
+            </div>
+
+            <!-- Aba: Segurança -->
+            <div id="tab-seguranca" class="config-content" style="display: none;">
+                <h2>Segurança e Senha</h2>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label>Senha Atual</label>
+                    <input type="password" placeholder="Digite a senha atual">
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label>Nova Senha</label>
+                    <input type="password" placeholder="Mínimo 6 caracteres">
+                </div>
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label>Confirmar Nova Senha</label>
+                    <input type="password" placeholder="Digite a nova senha novamente">
+                </div>
+                <div style="display: flex; justify-content: flex-end;">
+                    <button class="btn-primary" onclick="showToast('Senha alterada com sucesso!')">Atualizar Senha</button>
+                </div>
+            </div>
+
+            <!-- Aba: Notificações -->
+            <div id="tab-notificacoes" class="config-content" style="display: none;">
+                <h2>Notificações</h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Escolha como deseja ser avisado sobre as atividades na plataforma.</p>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); margin-bottom: 1rem;">
+                    <div>
+                        <strong style="display: block;">Novas Mensagens</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Quando um cliente ou profissional enviar mensagem</span>
+                    </div>
+                    <input type="checkbox" checked style="width: 20px; height: 20px; cursor: pointer;">
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); margin-bottom: 1rem;">
+                    <div>
+                        <strong style="display: block;">Atualização de Pedidos</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Quando um aluguel ou serviço mudar de status</span>
+                    </div>
+                    <input type="checkbox" checked style="width: 20px; height: 20px; cursor: pointer;">
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+                    <div>
+                        <strong style="display: block;">Promoções e Dicas</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Ofertas semanais da Music Station</span>
+                    </div>
+                    <input type="checkbox" style="width: 20px; height: 20px; cursor: pointer;">
+                </div>
+
+                <div style="display: flex; justify-content: flex-end;">
+                    <button class="btn-primary" onclick="showToast('Preferências salvas!')">Salvar Preferências</button>
+                </div>
+            </div>
+
+            <!-- Aba: Pagamentos -->
+            <div id="tab-pagamentos" class="config-content" style="display: none;">
+                <h2>Métodos de Pagamento</h2>
+                
+                <div style="border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <i class="ph-fill ph-credit-card" style="font-size: 2rem; color: var(--primary-light);"></i>
+                        <div>
+                            <strong style="display: block;">Mastercard final 4321</strong>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">Expira em 12/28</span>
+                        </div>
+                    </div>
+                    <button class="btn-secondary btn-sm" style="color: #f87171; border-color: rgba(248,113,113,0.3);" onclick="showToast('Cartão removido.')">Remover</button>
+                </div>
+
+                <button class="btn-secondary" style="width: 100%; justify-content: center;" onclick="alert('Na plataforma real, aqui abriria o formulário para inserir os dados do novo cartão via provedor de pagamentos (Stripe/Pagar.me).')"><i class="ph ph-plus"></i> Adicionar novo cartão</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/auth-simulator.js"></script>
+    <script>
+        function switchTab(tabId) {
+            document.getElementById('tab-perfil').style.display = 'none';
+            document.getElementById('tab-seguranca').style.display = 'none';
+            document.getElementById('tab-notificacoes').style.display = 'none';
+            document.getElementById('tab-pagamentos').style.display = 'none';
+            
+            document.querySelectorAll('.config-nav-item').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById('tab-' + tabId).style.display = 'block';
+            document.getElementById('nav-' + tabId).classList.add('active');
+        }
+    </script>
+    <script src="../js/interactions.js"></script>
+</body>
+</html>

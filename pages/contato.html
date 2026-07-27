@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/institucional.css">
+</head>
+
+<body>
+
+    <!-- Header será gerenciado pelo auth-simulator.js -->
+    <header style="border-bottom: 1px solid var(--border-color); background: var(--bg-color);">
+        <nav class="container nav-bar">
+            <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png"
+                        alt="Logo Music Station"></a></div>
+            <ul class="menu-principal">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="profissionais.html">Profissionais</a></li>
+                <li><a href="instrumentos.html">Instrumentos</a></li>
+                <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+            </ul>
+            <div class="botoes-auth"></div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container" style="max-width: 800px;">
+                <span class="section-subtitle">FALE CONOSCO</span>
+                <h1>Como podemos ajudar?</h1>
+                <p>Nossa equipe está pronta para tirar suas dúvidas e ajudar você a ter a melhor experiência na Music
+                    Station.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="contact-grid">
+
+                <!-- Informações de Contato -->
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="ph-fill ph-envelope-simple"></i></div>
+                        <div>
+                            <h3 style="margin-bottom: 0.5rem;">E-mail</h3>
+                            <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">Respondemos em
+                                até 24 horas úteis.</p>
+                            <strong style="color: var(--primary-light);">suporte@musicstation.com.br</strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="ph-fill ph-whatsapp-logo"></i></div>
+                        <div>
+                            <h3 style="margin-bottom: 0.5rem;">WhatsApp Suporte</h3>
+                            <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">Atendimento
+                                humano das 09h às 18h.</p>
+                            <strong style="color: var(--primary-light);">+55 (11) 99999-9999</strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="ph-fill ph-shield-check"></i></div>
+                        <div>
+                            <h3 style="margin-bottom: 0.5rem;">Segurança e Disputas</h3>
+                            <p style="color: var(--text-muted); margin-bottom: 0; font-size: 0.95rem;">Teve problema com
+                                um aluguel ou profissional? Seu dinheiro está seguro pela nossa plataforma Escrow. Abra
+                                um chamado no formulário ao lado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulário -->
+                <div class="contact-form">
+                    <h2 style="margin-bottom: 2rem;">Envie uma mensagem</h2>
+                    <form
+                        onsubmit="event.preventDefault(); showToast('Mensagem enviada com sucesso! Nossa equipe entrará em contato.'); this.reset();">
+                        <div class="form-group">
+                            <label>Seu nome</label>
+                            <input type="text" placeholder="Como devemos te chamar?" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Seu e-mail</label>
+                            <input type="email" placeholder="Para onde enviaremos a resposta?" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Assunto</label>
+                            <select
+                                style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main); font-family: inherit;"
+                                required>
+                                <option value="" disabled selected>Selecione um assunto</option>
+                                <option value="1">Dúvida sobre aluguel</option>
+                                <option value="2">Problemas com pagamento</option>
+                                <option value="3">Denunciar usuário</option>
+                                <option value="4">Outros assuntos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Mensagem</label>
+                            <textarea placeholder="Explique detalhadamente o que você precisa..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Enviar
+                            Mensagem <i class="ph ph-paper-plane-right"></i></button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png"
+                                alt="Logo Music Station"></a></div>
+                    <p style="margin-top: 1rem; font-size: 0.95rem;">Conectando clientes, profissionais e empresas do
+                        universo musical.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Navegação</h3>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="profissionais.html">Profissionais</a></li>
+                        <li><a href="instrumentos.html">Instrumentos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Institucional</h3>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de uso</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="contato.html">Fale Conosco</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Music Station. Todos os direitos reservados.</p>
+                <div class="footer-socials"><a href="#" class="social-btn"><i class="ph ph-instagram-logo"></i></a><a
+                        href="#" class="social-btn"><i class="ph ph-facebook-logo"></i></a><a href="#"
+                        class="social-btn"><i class="ph ph-youtube-logo"></i></a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/auth-simulator.js"></script>
+    <script src="../js/interactions.js"></script>
+</body>
+
+</html>

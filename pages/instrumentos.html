@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrumentos | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg\+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="container nav-bar">
+            <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station"></a></div>
+            <ul class="menu-principal">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="profissionais.html">Profissionais</a></li>
+                <li><a href="instrumentos.html" class="active">Instrumentos</a></li>
+                <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+            </ul>
+            <div class="botoes-auth">
+                <a href="login.html" class="btn-link">Entrar</a>
+                <a href="cadastro.html" class="btn-primary">Criar Conta</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <span class="section-subtitle">ALUGUEL</span>
+                <h1>Instrumentos para alugar</h1>
+                <p>Encontre o instrumento ideal para o seu projeto, evento ou estudo.</p>
+                <div class="page-search">
+                    <form class="search-bar" onsubmit="event.preventDefault(); document.querySelector('.pros-grid').style.opacity = '0.5'; setTimeout(() => document.querySelector('.pros-grid').style.opacity = '1', 300);">
+                        <div class="search-input">
+                            <i class="ph ph-magnifying-glass"></i>
+                            <input type="text" placeholder="Buscar instrumentos...">
+                        </div>
+                        <button type="submit" class="btn-primary">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="filter-bar">
+                    <button class="filter-tag active">Todos</button>
+                    <button class="filter-tag">Guitarra</button>
+                    <button class="filter-tag">Violão</button>
+                    <button class="filter-tag">Baixo</button>
+                    <button class="filter-tag">Bateria</button>
+                    <button class="filter-tag">Teclado</button>
+                    <button class="filter-tag">Sopro</button>
+                </div>
+
+                <div class="results-header">
+                    <span>Mostrando <strong>8</strong> instrumentos</span>
+                </div>
+
+                <div class="pros-grid">
+                    <div class="pro-card clickable-card" onclick="window.location.href='instrumento.html'">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1550985616-10810253b84d?w=400&h=300&fit=crop&q=80" alt="Fender Stratocaster">
+                            <div class="pro-rating"><i class="ph-fill ph-star" style="color: var(--secondary-color);"></i> 5.0</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Guitarra Fender Stratocaster</h3>
+                            <p class="pro-role">SoundHouse <i class="ph-fill ph-seal-check verified-badge" title="Empresa Verificada"></i> &middot; São Paulo</p>
+                            <div class="instrument-price"><span class="price">R$ 45<span class="price-unit">/dia</span></span><a href="instrumento.html" class="btn-primary btn-sm">Alugar</a></div>
+                        </div>
+                    </div>
+                    <div class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1524230659092-07f99a75c013?w=400&h=280&fit=crop&q=80" alt="Bateria Pearl Export">
+                            <div class="pro-rating badge-available">Disponível</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Bateria Pearl Export</h3>
+                            <p class="pro-role">Ritmo Music <i class="ph-fill ph-seal-check verified-badge" title="Empresa Verificada"></i> &middot; Rio de Janeiro</p>
+                            <div class="instrument-price"><span class="price">R$ 120<span class="price-unit">/dia</span></span><a href="#" class="btn-primary btn-sm">Alugar</a></div>
+                        </div>
+                    </div>
+                    <div class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?w=400&h=280&fit=crop&q=80" alt="Teclado Yamaha PSR">
+                            <div class="pro-rating badge-unavailable">Indisponível</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Teclado Yamaha PSR-E473</h3>
+                            <p class="pro-role">TecladoStore <i class="ph-fill ph-seal-check verified-badge" title="Empresa Verificada"></i> &middot; Curitiba</p>
+                            <div class="instrument-price"><span class="price">R$ 35<span class="price-unit">/dia</span></span><a href="#" class="btn-secondary btn-sm btn-disabled">Alugar</a></div>
+                        </div>
+                    </div>
+                    <div class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=400&h=280&fit=crop&q=80" alt="Violão Taylor 214ce">
+                            <div class="pro-rating badge-available">Disponível</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Violão Taylor 214ce</h3>
+                            <p class="pro-role">Acústica Pro <i class="ph-fill ph-seal-check verified-badge" title="Empresa Verificada"></i> &middot; Belo Horizonte</p>
+                            <div class="instrument-price"><span class="price">R$ 55<span class="price-unit">/dia</span></span><a href="#" class="btn-primary btn-sm">Alugar</a></div>
+                        </div>
+                    </div>
+                    <div class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=400&h=280&fit=crop&q=80" alt="Baixo Fender Jazz Bass">
+                            <div class="pro-rating badge-available">Disponível</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Baixo Fender Jazz Bass</h3>
+                            <p class="pro-role"><i class="ph-fill ph-user" title="Pessoa Física"></i> Carlos Eduardo &middot; São Paulo</p>
+                            <div class="instrument-price"><span class="price">R$ 50<span class="price-unit">/dia</span></span><a href="#" class="btn-primary btn-sm">Alugar</a></div>
+                        </div>
+                    </div>
+                    <div class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1461784180009-21121b2f204c?w=400&h=280&fit=crop&q=80" alt="Saxofone Yamaha YAS-280">
+                            <div class="pro-rating badge-available">Disponível</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Saxofone Yamaha YAS-280</h3>
+                            <p class="pro-role">Sopro Music <i class="ph-fill ph-seal-check verified-badge" title="Empresa Verificada"></i> &middot; Salvador</p>
+                            <div class="instrument-price"><span class="price">R$ 70<span class="price-unit">/dia</span></span><a href="#" class="btn-primary btn-sm">Alugar</a></div>
+                        </div>
+                    </div>
+                    <div class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1558098329-a11cff621064?w=400&h=280&fit=crop&q=80" alt="Guitarra Gibson Les Paul">
+                            <div class="pro-rating badge-unavailable">Indisponível</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Guitarra Gibson Les Paul</h3>
+                            <p class="pro-role">Rock Gear <i class="ph-fill ph-seal-check verified-badge" title="Empresa Verificada"></i> &middot; Porto Alegre</p>
+                            <div class="instrument-price"><span class="price">R$ 80<span class="price-unit">/dia</span></span><a href="#" class="btn-secondary btn-sm btn-disabled">Alugar</a></div>
+                        </div>
+                    </div>
+                    <div class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=400&h=280&fit=crop&q=80" alt="Bateria Eletrônica Roland">
+                            <div class="pro-rating badge-available">Disponível</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Bateria Eletrônica Roland</h3>
+                            <p class="pro-role">Ritmo Music <i class="ph-fill ph-seal-check verified-badge" title="Empresa Verificada"></i> &middot; Rio de Janeiro</p>
+                            <div class="instrument-price"><span class="price">R$ 90<span class="price-unit">/dia</span></span><a href="#" class="btn-primary btn-sm">Alugar</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination-container">
+                    <button class="page-link"><i class="ph ph-caret-left"></i></button>
+                    <button class="page-link active">1</button>
+                    <button class="page-link">2</button>
+                    <button class="page-link">3</button>
+                    <button class="page-link"><i class="ph ph-caret-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <a href="../index.html">
+                            <img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station">
+                        </a>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.95rem;">Conectando clientes, profissionais e empresas do universo musical.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navegação</h3>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="profissionais.html">Profissionais</a></li>
+                        <li><a href="instrumentos.html">Instrumentos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Institucional</h3>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de uso</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="contato.html">Fale Conosco</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Music Station. Todos os direitos reservados.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-btn"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#" class="social-btn"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="#" class="social-btn"><i class="ph ph-youtube-logo"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/auth-simulator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get('q');
+            if (query) {
+                // Simula filtro escondendo cards que não dão match
+                const term = query.toLowerCase();
+                const cards = document.querySelectorAll('.pro-card');
+                let visibleCount = 0;
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    if (title.includes(term)) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                document.querySelector('.results-header strong').textContent = visibleCount;
+            }
+        });
+    </script>
+    <script src="../js/interactions.js"></script>
+</body>
+</html>
+

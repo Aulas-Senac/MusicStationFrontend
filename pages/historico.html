@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        body { background: #0d0914; margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; }
+
+        .history-table { width: 100%; border-collapse: collapse; background: #150f1f; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .history-table th, .history-table td { padding: 1.2rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .history-table th { color: var(--text-muted); font-weight: 600; font-size: 0.9rem; background: rgba(255,255,255,0.02); }
+        .history-table tr:last-child td { border-bottom: none; }
+        
+        .status-badge { padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+        .status-completed { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+        .status-pending { background: rgba(234, 179, 8, 0.15); color: #eab308; }
+        
+        @media (max-width: 992px) { 
+            /* Convert Table to Cards */
+            .history-table, .history-table tbody, .history-table tr, .history-table td { display: block; width: 100%; box-sizing: border-box; }
+            .history-table thead { display: none; }
+            .history-table { border: none; background: transparent; }
+            .history-table tr { background: #150f1f; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1rem; padding: 1rem; }
+            .history-table td { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: right; }
+            .history-table td:first-child { flex-direction: column; align-items: flex-start; text-align: left; }
+            .history-table td:last-child { border-bottom: none; padding-bottom: 0; }
+            .history-table td::before { content: attr(data-label); font-weight: 600; color: #a1a1aa; font-size: 0.85rem; }
+            .history-table td:first-child::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header style="border-bottom: 1px solid var(--border-color); background: var(--bg-color);">
+        <nav class="container nav-bar">
+            <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station"></a></div>
+            <ul class="menu-principal">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="profissionais.html">Profissionais</a></li>
+                <li><a href="instrumentos.html">Instrumentos</a></li>
+            </ul>
+            <div class="botoes-auth"></div>
+        </nav>
+    </header>
+
+    <div class="container painel-layout">
+        <aside class="sidebar">
+            <div class="profile-card">
+                <div class="profile-avatar"><i class="ph ph-music-note"></i></div>
+                <div class="profile-info">
+                    <span class="profile-name" id="user-name">João</span>
+                    <span class="profile-badge" id="user-badge"><i class="ph-fill ph-user"></i> Cliente</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="painel.html" class="nav-item"><i class="ph ph-squares-four"></i> Visão geral</a>
+                <a href="meus-itens.html" class="nav-item"><i class="ph ph-shopping-bag"></i> <span id="lbl-meus-itens">Meus pedidos</span></a>
+                <a href="meus-anuncios.html" class="nav-item"><i class="ph ph-megaphone"></i> Meus anúncios</a>
+                <a href="historico.html" class="nav-item active"><i class="ph ph-calendar-blank"></i> <span id="lbl-solicitacoes">Histórico</span></a>
+            </nav>
+            <div class="nav-bottom">
+                <a href="../index.html" class="nav-item"><i class="ph ph-house"></i> Ver site</a>
+                <a href="#" class="nav-item logout" onclick="doLogout()"><i class="ph ph-sign-out"></i> Sair</a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <h1 id="page-title">Histórico e Solicitações</h1>
+                    <p id="page-subtitle">Acompanhe todos os seus registros na plataforma.</p>
+                </div>
+            </div>
+
+            <div class="table-responsive" style="width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Item / Serviço</th>
+                            <th>Data</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        <!-- Preenchido dinamicamente no JS -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/auth-simulator.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const profile = localStorage.getItem('ms_mock_profile') || 'cliente';
+            const badge = document.getElementById('user-badge');
+            
+            // --- SIDEBAR DEDUP FIX ---
+            const linkPedidos = document.querySelector('a[href="meus-itens.html"]');
+            const linkAnuncios = document.querySelector('a[href="meus-anuncios.html"]');
+            
+            if(profile === 'empresa' || profile === 'profissional') {
+                if(linkPedidos) linkPedidos.style.display = 'none'; // Hide Meus Pedidos
+                if(profile === 'profissional' && linkAnuncios) linkAnuncios.innerHTML = '<i class="ph ph-briefcase"></i> Meus serviços';
+            } else {
+                if(linkAnuncios) linkAnuncios.style.display = 'none'; // Hide Meus anúncios para clientes normais (simplifica menu)
+            }
+            
+            const tbody = document.getElementById('history-body');
+            
+            if(profile === 'empresa') {
+                badge.innerHTML = '<i class="ph-fill ph-storefront"></i> Empresa';
+                document.getElementById('lbl-solicitacoes').textContent = 'Locações';
+                document.getElementById('page-title').textContent = 'Locações e Reservas';
+                
+                tbody.innerHTML = `
+                    <tr>
+                        <td data-label="Item / Serviço"><strong>Guitarra Fender Stratocaster</strong><br><span style="font-size:0.85rem; color:var(--text-muted);">Cliente: Marcos T.</span></td>
+                        <td data-label="Data">10/08/2023 - 12/08/2023</td>
+                        <td data-label="Valor">R$ 135,00</td>
+                        <td data-label="Status"><span class="status-badge status-pending">Pendente</span></td>
+                        <td data-label="Ação"><a href="mensagens.html" class="btn-secondary btn-sm">Ver Chat</a></td>
+                    </tr>
+                `;
+            } 
+            else if (profile === 'profissional') {
+                badge.innerHTML = '<i class="ph-fill ph-briefcase"></i> Profissional';
+                document.getElementById('lbl-solicitacoes').textContent = 'Pedidos';
+                document.getElementById('page-title').textContent = 'Pedidos de Serviço';
+                
+                const pageDesc = document.querySelector('.dashboard-header p, #page-subtitle');
+                if(pageDesc) pageDesc.textContent = 'Gerencie os pedidos de serviços dos seus clientes.';
+                
+                tbody.innerHTML = `
+                    <tr>
+                        <td data-label="Item / Serviço"><strong>Aula de Violão</strong><br><span style="font-size:0.85rem; color:var(--text-muted);">Cliente: Ana C.</span></td>
+                        <td data-label="Data">Ontem, 15:00</td>
+                        <td data-label="Valor">R$ 80,00</td>
+                        <td data-label="Status"><span class="status-badge status-completed">Concluído</span></td>
+                        <td data-label="Ação">-</td>
+                    </tr>
+                `;
+            }
+            else {
+                badge.innerHTML = '<i class="ph-fill ph-user"></i> Cliente';
+                badge.style.color = '#8b5cf6'; badge.style.background = 'rgba(109, 40, 217, 0.15)';
+                
+                tbody.innerHTML = `
+                    <tr>
+                        <td data-label="Item / Serviço"><strong>Regulagem Completa</strong><br><span style="font-size:0.85rem; color:var(--text-muted);">Luthier: Rafael Mendes</span></td>
+                        <td data-label="Data">15/07/2023</td>
+                        <td data-label="Valor">R$ 150,00</td>
+                        <td data-label="Status"><span class="status-badge status-completed">Concluído</span></td>
+                        <td data-label="Ação"><a href="avaliar.html" class="btn-primary btn-sm">Avaliar</a></td>
+                    </tr>
+                `;
+            }
+        });
+    </script>
+    <script src="../js/interactions.js"></script>
+
+</body>
+</html>
+

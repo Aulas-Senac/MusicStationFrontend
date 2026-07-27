@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg\+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="container nav-bar">
+            <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station"></a></div>
+            <ul class="menu-principal">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="servicos.html" class="active">Serviços</a></li>
+                <li><a href="profissionais.html">Profissionais</a></li>
+                <li><a href="instrumentos.html">Instrumentos</a></li>
+                <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+            </ul>
+            <div class="botoes-auth">
+                <a href="login.html" class="btn-link">Entrar</a>
+                <a href="cadastro.html" class="btn-primary">Criar Conta</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <span class="section-subtitle">CATEGORIAS</span>
+                <h1>Serviços musicais</h1>
+                <p>Encontre o serviço ideal para a sua necessidade musical.</p>
+                <div class="page-search">
+                    <form class="search-bar" onsubmit="event.preventDefault(); document.querySelector('.category-grid').style.opacity = '0.5'; setTimeout(() => document.querySelector('.category-grid').style.opacity = '1', 300);">
+                        <div class="search-input">
+                            <i class="ph ph-magnifying-glass"></i>
+                            <input type="text" id="servicosSearchInput" placeholder="Buscar serviços...">
+                        </div>
+                        <button type="submit" class="btn-primary">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="filter-bar">
+                    <button class="filter-tag active">Todos</button>
+                    <button class="filter-tag">Manutenção</button>
+                    <button class="filter-tag">Aulas</button>
+                    <button class="filter-tag">Técnico de Som</button>
+                    <button class="filter-tag">Produção</button>
+                    <button class="filter-tag">Afinação</button>
+                </div>
+
+                <div class="results-header">
+                    <p>Mostrando <strong>8</strong> serviços</p>
+                </div>
+
+                <div class="category-grid">
+                    <a href="servico.html" class="category-card">
+                        <div class="card-icon"><i class="ph ph-wrench"></i></div>
+                        <h3>Manutenção e Reparo</h3>
+                        <p>Conserto de guitarras, violões, baixos e instrumentos de corda em geral.</p>
+                        <div class="card-footer"><span>142 profissionais</span><i class="ph ph-arrow-right"></i></div>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="card-icon"><i class="ph ph-graduation-cap"></i></div>
+                        <h3>Aulas de Música</h3>
+                        <p>Professores particulares para diversos instrumentos e estilos musicais.</p>
+                        <div class="card-footer"><span>318 profissionais</span><i class="ph ph-arrow-right"></i></div>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="card-icon"><i class="ph ph-microphone-stage"></i></div>
+                        <h3>Técnicos de Som</h3>
+                        <p>Profissionais para gravação, mixing, mastering e eventos ao vivo.</p>
+                        <div class="card-footer"><span>87 profissionais</span><i class="ph ph-arrow-right"></i></div>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="card-icon"><i class="ph ph-guitar"></i></div>
+                        <h3>Aluguel de Instrumentos</h3>
+                        <p>Empresas e profissionais com instrumentos disponíveis para locação.</p>
+                        <div class="card-footer"><span>96 empresas</span><i class="ph ph-arrow-right"></i></div>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="card-icon"><i class="ph ph-headphones"></i></div>
+                        <h3>Produção Musical</h3>
+                        <p>Produtores e estúdios para dar vida às suas composições.</p>
+                        <div class="card-footer"><span>64 estúdios</span><i class="ph ph-arrow-right"></i></div>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="card-icon"><i class="ph ph-sliders"></i></div>
+                        <h3>Afinação e Setup</h3>
+                        <p>Afinadores especializados e setup completo para o seu instrumento.</p>
+                        <div class="card-footer"><span>53 profissionais</span><i class="ph ph-arrow-right"></i></div>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="card-icon"><i class="ph ph-speaker-high"></i></div>
+                        <h3>Sonorização de Eventos</h3>
+                        <p>Equipamentos e técnicos para shows, festas e eventos corporativos.</p>
+                        <div class="card-footer"><span>41 profissionais</span><i class="ph ph-arrow-right"></i></div>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="card-icon"><i class="ph ph-music-note"></i></div>
+                        <h3>Composição e Arranjo</h3>
+                        <p>Compositores e arranjadores para trilhas, jingles e projetos artísticos.</p>
+                        <div class="card-footer"><span>28 profissionais</span><i class="ph ph-arrow-right"></i></div>
+                    </a>
+                </div>
+
+                <div class="pagination-container">
+                    <button class="page-link"><i class="ph ph-caret-left"></i></button>
+                    <button class="page-link active">1</button>
+                    <button class="page-link">2</button>
+                    <button class="page-link">3</button>
+                    <button class="page-link"><i class="ph ph-caret-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <a href="../index.html">
+                            <img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station">
+                        </a>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.95rem;">Conectando clientes, profissionais e empresas do universo musical.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navegação</h3>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="profissionais.html">Profissionais</a></li>
+                        <li><a href="instrumentos.html">Instrumentos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Institucional</h3>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de uso</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="contato.html">Fale Conosco</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Music Station. Todos os direitos reservados.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-btn"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#" class="social-btn"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="#" class="social-btn"><i class="ph ph-youtube-logo"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/auth-simulator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get('q');
+            if (query) {
+                document.getElementById('servicosSearchInput').value = query;
+                const term = query.toLowerCase();
+                const cards = document.querySelectorAll('.category-card');
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const desc = card.querySelector('p').textContent.toLowerCase();
+                    if (title.includes(term) || desc.includes(term)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="../js/interactions.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta | Music Station</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg\+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="auth-body">
+
+    <nav class="container nav-bar">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station">
+            </a>
+        </div>
+        
+        <ul class="menu-principal">
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="profissionais.html">Profissionais</a></li>
+            <li><a href="instrumentos.html">Instrumentos</a></li>
+            <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+        </ul>
+
+        <div class="botoes-auth">
+            <a href="login.html" class="btn-link">Entrar</a>
+            <a href="cadastro.html" class="btn-primary" style="background: var(--primary-light);">Criar Conta</a>
+        </div>
+    </nav>
+
+    <div class="auth-layout">
+        <!-- PAINEL ESQUERDO - Seletor de Perfil -->
+        <div class="auth-brand-panel">
+            <div class="auth-brand-content">
+
+                <div class="profile-selector">
+                    <h2>Escolha o seu perfil</h2>
+
+                    <div class="profile-options">
+                        <div class="profile-option active" data-profile="cliente" onclick="selectProfile('cliente')">
+                            <div class="profile-option-left">
+                                <div class="profile-option-icon"><i class="ph ph-users"></i></div>
+                                <div class="profile-option-text">
+                                    <strong>Cliente</strong>
+                                    <span>Buscar e contratar serviços musicais</span>
+                                </div>
+                            </div>
+                            <div class="profile-check"><i class="ph-fill ph-check-circle"></i></div>
+                        </div>
+
+                        <div class="profile-option" data-profile="profissional" onclick="selectProfile('profissional')">
+                            <div class="profile-option-left">
+                                <div class="profile-option-icon"><i class="ph ph-briefcase"></i></div>
+                                <div class="profile-option-text">
+                                    <strong>Profissional</strong>
+                                    <span>Oferecer serviços musicais</span>
+                                </div>
+                            </div>
+                            <div class="profile-check"><i class="ph-fill ph-check-circle"></i></div>
+                        </div>
+
+                        <div class="profile-option" data-profile="empresa" onclick="selectProfile('empresa')">
+                            <div class="profile-option-left">
+                                <div class="profile-option-icon"><i class="ph ph-storefront"></i></div>
+                                <div class="profile-option-text">
+                                    <strong>Empresa</strong>
+                                    <span>Alugar instrumentos e equipamentos</span>
+                                </div>
+                            </div>
+                            <div class="profile-check"><i class="ph-fill ph-check-circle"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Benefícios dinâmicos -->
+                    <div class="profile-benefits">
+                        <h3 id="benefits-title">Benefícios do perfil Cliente</h3>
+                        <ul id="benefits-list">
+                            <li><i class="ph-fill ph-check-circle"></i> Busca por categoria e região</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Avaliações reais</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Chat com profissionais</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-brand-decor">
+                <div class="decor-circle decor-1"></div>
+                <div class="decor-circle decor-2"></div>
+            </div>
+        </div>
+
+        <!-- PAINEL DIREITO - Formulário -->
+        <div class="auth-form-panel">
+            <div class="auth-form-container">
+                <a href="../index.html" class="logo auth-mobile-logo">
+                    <img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station">
+                </a>
+
+                <div class="auth-form-header">
+                    <h2 id="form-title">Dados do Cliente</h2>
+                    <p>Preencha os campos abaixo para criar sua conta.</p>
+                </div>
+
+                <form class="auth-form">
+                    <div class="form-group">
+                        <label for="nome">Nome completo</label>
+                        <div class="input-icon-wrapper">
+                            <i class="ph ph-user"></i>
+                            <input type="text" id="nome" placeholder="Seu nome" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <div class="input-icon-wrapper">
+                            <i class="ph ph-envelope-simple"></i>
+                            <input type="email" id="email" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <div class="input-icon-wrapper">
+                            <i class="ph ph-phone"></i>
+                            <input type="tel" id="telefone" placeholder="(11) 99999-9999" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <div class="input-icon-wrapper">
+                            <i class="ph ph-lock-simple"></i>
+                            <input type="password" id="senha" placeholder="Mínimo 6 caracteres" minlength="6" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-check">
+                        <label class="checkbox-label">
+                            <input type="checkbox" required>
+                            <span>Aceito os <a href="#">termos de uso</a> e a <a href="#">política de privacidade</a>.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full" id="btn-submit">
+                        Criar conta de Cliente <i class="ph ph-arrow-right"></i>
+                    </button>
+                </form>
+
+                <p class="auth-switch">
+                    Já tem uma conta? <a href="login.html">Entrar</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados de benefícios para cada tipo de perfil
+        const profileData = {
+            cliente: {
+                title: 'Benefícios do perfil Cliente',
+                formTitle: 'Dados do Cliente',
+                btnText: 'Criar conta de Cliente',
+                benefits: [
+                    'Busca por categoria e região',
+                    'Avaliações reais',
+                    'Chat com profissionais'
+                ]
+            },
+            profissional: {
+                title: 'Benefícios do perfil Profissional',
+                formTitle: 'Dados do Profissional',
+                btnText: 'Criar conta de Profissional',
+                benefits: [
+                    'Perfil personalizado',
+                    'Gestão de agenda',
+                    'Receba pagamentos com segurança'
+                ]
+            },
+            empresa: {
+                title: 'Benefícios do perfil Empresa',
+                formTitle: 'Dados da Empresa',
+                btnText: 'Criar conta de Empresa',
+                benefits: [
+                    'Catálogo de instrumentos',
+                    'Painel de gestão',
+                    'Relatórios de locação'
+                ]
+            }
+        };
+
+        let currentRole = 'cliente';
+
+        function selectProfile(type) {
+            currentRole = type;
+            // Atualiza visual dos cards
+            document.querySelectorAll('.profile-option').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            document.querySelector('[data-profile="' + type + '"]').classList.add('active');
+
+            // Atualiza benefícios
+            var data = profileData[type];
+            document.getElementById('benefits-title').textContent = data.title;
+            
+            var listHtml = '';
+            data.benefits.forEach(function(b) {
+                listHtml += '<li><i class="ph-fill ph-check-circle"></i> ' + b + '</li>';
+            });
+            document.getElementById('benefits-list').innerHTML = listHtml;
+
+            // Atualiza formulário
+            document.getElementById('form-title').textContent = data.formTitle;
+            document.getElementById('btn-submit').innerHTML = data.btnText + ' <i class="ph ph-arrow-right"></i>';
+        }
+
+        document.querySelector('.auth-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            
+            // Salva as credenciais no localStorage (simulando um Banco de Dados)
+            localStorage.setItem('registered_email', email);
+            localStorage.setItem('registered_password', senha);
+            localStorage.setItem('registered_role', currentRole);
+            
+            doLogin(currentRole);
+            window.location.href = 'sucesso.html';
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const profileParam = params.get('profile');
+            if (profileParam && profileData[profileParam]) {
+                selectProfile(profileParam);
+            }
+        });
+    </script>
+    <script src="../js/auth-simulator.js"></script>
+    <script src="../js/interactions.js"></script>
+</body>
+</html>
+

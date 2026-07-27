@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Seguro | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/forms.css">
+
+</head>
+<body>
+    <header style="border-bottom: 1px solid var(--border-color); background: var(--bg-color);">
+        <nav class="container nav-bar" style="justify-content: center;">
+            <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station"></a></div>
+        </nav>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+        <a href="mensagens.html" class="back-link"><i class="ph ph-arrow-left"></i> Voltar para o chat</a>
+        
+        <div class="checkout-grid">
+            <!-- Coluna de Pagamento -->
+            <div>
+                <div class="checkout-box" id="block-retirada" style="margin-bottom: 2rem;">
+                    <h2><i class="ph-fill ph-map-pin"></i> Retirada do Equipamento</h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem;">O instrumento deverá ser retirado e devolvido no endereço da loja:</p>
+                    <div style="background: var(--bg-color); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <strong>SoundHouse SP</strong><br>
+                        Rua Teodoro Sampaio, 800 - Pinheiros<br>
+                        São Paulo, SP - CEP 05406-000
+                    </div>
+                </div>
+
+                <div class="checkout-box">
+                    <h2><i class="ph-fill ph-credit-card"></i> Pagamento</h2>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method active" id="btn-cc" onclick="selectPayment('cc')">
+                            <i class="ph ph-credit-card"></i>
+                            Cartão de Crédito
+                        </div>
+                        <div class="payment-method" id="btn-pix" onclick="selectPayment('pix')">
+                            <i class="ph ph-qr-code"></i>
+                            PIX
+                        </div>
+                    </div>
+
+                    <div id="credit-card-form">
+                        <div class="form-group">
+                            <label>Número do Cartão</label>
+                            <input type="text" placeholder="0000 0000 0000 0000">
+                        </div>
+                        <div class="form-group">
+                            <label>Nome impresso no cartão</label>
+                            <input type="text" placeholder="JOAO P SILVA">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Validade</label>
+                                <input type="text" placeholder="MM/AA">
+                            </div>
+                            <div class="form-group">
+                                <label>CVV</label>
+                                <input type="text" placeholder="123">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="pix-form" style="display: none; text-align: center; padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px;">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=MusicStation" alt="QR Code PIX" style="margin-bottom: 1rem; border-radius: 8px; border: 4px solid white;">
+                        <p style="margin-bottom: 0.5rem; font-weight: 600;">Escaneie o QR Code</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Ou copie e cole o código abaixo:</p>
+                        
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <input type="text" value="00020101021126580014br.gov.bcb.pix.mock" readonly style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main); font-size: 0.8rem; text-align: center;">
+                            <button class="btn-secondary" onclick="showToast('Código PIX copiado!')"><i class="ph ph-copy"></i></button>
+                        </div>
+                        
+                        <div style="background: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 0.8rem; border-radius: 8px; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            <i class="ph ph-clock"></i> Pagamento expira em: <strong id="pix-timer">10:00</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna de Resumo do Pedido -->
+            <div>
+                <div class="checkout-box order-summary">
+                    <h2>Resumo da Locação</h2>
+                    
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                        <img id="chk-img" src="https://images.unsplash.com/photo-1550985616-10810253b84d?w=100&h=100&fit=crop&q=80" alt="Item" style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover;">
+                        <div>
+                            <strong id="chk-title">Fender Stratocaster</strong>
+                            <p id="chk-seller" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Por SoundHouse SP</p>
+                        </div>
+                    </div>
+
+                    <div id="chk-details">
+                        <!-- Preenchido via JS -->
+                    </div>
+
+                    <div class="summary-total">
+                        <span>Total a pagar</span>
+                        <span id="chk-total">R$ 148,50</span>
+                    </div>
+                    <p id="chk-caucao-text" style="font-size: 0.75rem; color: var(--text-muted); text-align: right; margin-top: 0.5rem;">+ Bloqueio de caução (R$ 500)</p>
+
+                    <button class="btn-primary" id="btn-pay" style="width: 100%; justify-content: center; margin-top: 2rem; height: 50px;" onclick="processPayment()">
+                        <i class="ph-fill ph-lock-key"></i> Pagar e Reservar
+                    </button>
+
+                    <div class="secure-badge">
+                        <i class="ph-fill ph-shield-check" style="color: #22c55e;"></i>
+                        Pagamento 100% Seguro
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Auth Simulator Invisível -->
+    <script src="../js/auth-simulator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!requireAuth('cliente')) return;
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const item = urlParams.get('item');
+            
+            const detailsDiv = document.getElementById('chk-details');
+            
+            if (item === 'servico') {
+                document.getElementById('chk-img').src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&q=80';
+                document.getElementById('chk-title').textContent = 'Regulagem Completa';
+                document.getElementById('chk-seller').textContent = 'Por Rafael Mendes';
+                document.getElementById('chk-total').textContent = 'R$ 132,00';
+                document.getElementById('chk-caucao-text').style.display = 'none';
+                
+                document.getElementById('block-retirada').innerHTML = `
+                    <h2><i class="ph-fill ph-calendar"></i> Agendamento</h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem;">Detalhes do serviço agendado:</p>
+                    <div style="background: var(--bg-color); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <strong>Data:</strong> Confirmado no chat<br>
+                        <strong>Local:</strong> Levar na oficina do luthier
+                    </div>
+                `;
+
+                detailsDiv.innerHTML = `
+                    <div class="summary-item"><span style="color: var(--text-muted);">Serviço (Mão de obra)</span><span>R$ 120,00</span></div>
+                    <div class="summary-item"><span style="color: var(--text-muted);">Taxa da Plataforma (10%)</span><span>R$ 12,00</span></div>
+                `;
+            } else {
+                detailsDiv.innerHTML = `
+                    <div class="summary-item"><span style="color: var(--text-muted);">Datas</span><span>10 a 12 de Agosto (3 dias)</span></div>
+                    <div class="summary-item"><span style="color: var(--text-muted);">Diárias (3x R$ 45)</span><span>R$ 135,00</span></div>
+                    <div class="summary-item"><span style="color: var(--text-muted);">Taxa de Proteção</span><span>R$ 13,50</span></div>
+                    <div class="summary-item" style="color: var(--primary-light);"><span>Caução (No cartão)</span><span>R$ 500,00</span></div>
+                `;
+            }
+        });
+
+        function selectPayment(method) {
+            document.getElementById('btn-cc').classList.remove('active');
+            document.getElementById('btn-pix').classList.remove('active');
+            
+            document.getElementById('btn-' + method).classList.add('active');
+            
+            if(method === 'cc') {
+                document.getElementById('credit-card-form').style.display = 'block';
+                document.getElementById('pix-form').style.display = 'none';
+                document.getElementById('btn-pay').innerHTML = '<i class="ph-fill ph-lock-key"></i> Pagar e Reservar';
+            } else {
+                document.getElementById('credit-card-form').style.display = 'none';
+                document.getElementById('pix-form').style.display = 'block';
+                document.getElementById('btn-pay').innerHTML = '<i class="ph-fill ph-check-circle"></i> Já fiz o pagamento';
+                startTimer();
+            }
+        }
+
+        let timerInterval;
+        function startTimer() {
+            clearInterval(timerInterval);
+            let time = 600; // 10 minutes
+            timerInterval = setInterval(() => {
+                time--;
+                let m = Math.floor(time / 60);
+                let s = time % 60;
+                document.getElementById('pix-timer').textContent = `${m}:${s < 10 ? '0'+s : s}`;
+                if(time <= 0) clearInterval(timerInterval);
+            }, 1000);
+        }
+
+        function processPayment() {
+            const btn = document.getElementById('btn-pay');
+            btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Processando...';
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
+            
+            setTimeout(() => {
+                window.location.href = 'meus-itens.html?success=true';
+            }, 2500);
+        }
+    </script>
+    <script src="../js/interactions.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const type = urlParams.get('type');
+            const total = urlParams.get('total');
+            
+            if(type === 'service') {
+                const price = parseFloat(urlParams.get('price'));
+                const delivery = parseFloat(urlParams.get('delivery'));
+                const fee = price * 0.1;
+                
+                document.getElementById('chk-title').textContent = 'Regulagem Completa';
+                document.getElementById('chk-seller').textContent = 'Por Rafael Mendes';
+                document.getElementById('chk-img').src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&q=80';
+                document.getElementById('chk-caucao-text').style.display = 'none';
+                
+                document.getElementById('chk-total').textContent = `R$ ${parseFloat(total).toFixed(2).replace('.', ',')}`;
+                
+                let html = `
+                    <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-muted);">
+                        <span>Serviço</span>
+                        <span>R$ ${price.toFixed(2).replace('.', ',')}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-muted);">
+                        <span>Taxa de serviço (10%)</span>
+                        <span>R$ ${fee.toFixed(2).replace('.', ',')}</span>
+                    </div>
+                `;
+                
+                if (delivery > 0) {
+                    html += `
+                    <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 1.5rem; color: var(--text-muted);">
+                        <span>Taxa de Coleta</span>
+                        <span>R$ ${delivery.toFixed(2).replace('.', ',')}</span>
+                    </div>`;
+                }
+                
+                document.getElementById('chk-details').innerHTML = html;
+                
+            } else if(urlParams.get('days') && total) {
+                const days = urlParams.get('days');
+                const subtotal = days * 45;
+                const fee = total - subtotal;
+                
+                document.getElementById('chk-total').textContent = `R$ ${parseFloat(total).toFixed(2).replace('.', ',')}`;
+                
+                document.getElementById('chk-details').innerHTML = `
+                    <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-muted);">
+                        <span>Diárias (R$ 45 x ${days})</span>
+                        <span>R$ ${subtotal.toFixed(2).replace('.', ',')}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 1.5rem; color: var(--text-muted);">
+                        <span>Taxa de serviço (10%)</span>
+                        <span>R$ ${fee.toFixed(2).replace('.', ',')}</span>
+                    </div>
+                `;
+            } else {
+                // Default fallback if accessed directly
+                document.getElementById('chk-details').innerHTML = `
+                    <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-muted);">
+                        <span>Diárias (R$ 45 x 3)</span>
+                        <span>R$ 135,00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 1.5rem; color: var(--text-muted);">
+                        <span>Taxa de serviço (10%)</span>
+                        <span>R$ 13,50</span>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
+

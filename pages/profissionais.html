@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profissionais | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg\+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="container nav-bar">
+            <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station"></a></div>
+            <ul class="menu-principal">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="profissionais.html" class="active">Profissionais</a></li>
+                <li><a href="instrumentos.html">Instrumentos</a></li>
+                <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+            </ul>
+            <div class="botoes-auth">
+                <a href="login.html" class="btn-link">Entrar</a>
+                <a href="cadastro.html" class="btn-primary">Criar Conta</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <span class="section-subtitle">ENCONTRE</span>
+                <h1>Profissionais</h1>
+                <p>Luthiers, professores, técnicos de som e muito mais perto de você.</p>
+                <div class="page-search">
+                    <form class="search-bar" onsubmit="event.preventDefault(); window.location.href='#'">
+                        <div class="search-input">
+                            <i class="ph ph-magnifying-glass"></i>
+                            <input type="text" placeholder="Buscar profissionais...">
+                        </div>
+                        <button type="submit" class="btn-primary">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="filter-bar">
+                    <button class="filter-tag active">Todos</button>
+                    <button class="filter-tag">Luthier</button>
+                    <button class="filter-tag">Professor</button>
+                    <button class="filter-tag">Técnico de Som</button>
+                    <button class="filter-tag">Produtor</button>
+                </div>
+
+                <div class="results-header">
+                    <span>Mostrando <strong>12</strong> profissionais</span>
+                </div>
+
+                <div class="pros-grid">
+                    <div class="pro-card clickable-card" onclick="window.location.href='perfil.html'">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=280&fit=crop&q=80" alt="Rafael Mendes">
+                            <div class="pro-rating"><i class="ph-fill ph-star" style="color: var(--secondary-color);"></i> 4.9</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Rafael Mendes <i class="ph-fill ph-seal-check" style="color: #22c55e;"></i></h3>
+                            <p class="pro-role">Luthier</p>
+                            <p class="pro-desc">Especialista em regulagem e elétrica de guitarras e baixos.</p>
+                        </div>
+                    </div>
+                    <a href="perfil.html" class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=280&fit=crop&q=80" alt="Carla Nogueira">
+                            <div class="pro-rating"><i class="ph-fill ph-star" style="color: var(--secondary-color);"></i> 5.0</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Carla Nogueira</h3>
+                            <p class="pro-role">Professora de Piano e Teoria</p>
+                            <div class="pro-meta"><span><i class="ph ph-map-pin"></i> Rio de Janeiro, RJ</span><span>89 avaliações</span></div>
+                        </div>
+                    </a>
+                    <a href="perfil.html" class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=280&fit=crop&q=80" alt="Diego Ferreira">
+                            <div class="pro-rating"><i class="ph-fill ph-star" style="color: var(--secondary-color);"></i> 4.8</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Diego Ferreira</h3>
+                            <p class="pro-role">Técnico de Som - Estúdio</p>
+                            <div class="pro-meta"><span><i class="ph ph-map-pin"></i> Belo Horizonte, MG</span><span>64 avaliações</span></div>
+                        </div>
+                    </a>
+                    <a href="perfil.html" class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=280&fit=crop&q=80" alt="Juliana Rocha">
+                            <div class="pro-rating"><i class="ph-fill ph-star" style="color: var(--secondary-color);"></i> 4.9</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Juliana Rocha</h3>
+                            <p class="pro-role">Professora de Violão</p>
+                            <div class="pro-meta"><span><i class="ph ph-map-pin"></i> Curitiba, PR</span><span>102 avaliações</span></div>
+                        </div>
+                    </a>
+                    <a href="perfil.html" class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=280&fit=crop&q=80" alt="Lucas Martins">
+                            <div class="pro-rating"><i class="ph-fill ph-star" style="color: var(--secondary-color);"></i> 4.7</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Lucas Martins</h3>
+                            <p class="pro-role">Produtor Musical</p>
+                            <div class="pro-meta"><span><i class="ph ph-map-pin"></i> Brasília, DF</span><span>53 avaliações</span></div>
+                        </div>
+                    </a>
+                    <a href="perfil.html" class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=280&fit=crop&q=80" alt="Amanda Costa">
+                            <div class="pro-rating"><i class="ph-fill ph-star" style="color: var(--secondary-color);"></i> 4.9</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Amanda Costa</h3>
+                            <p class="pro-role">Professora de Canto</p>
+                            <div class="pro-meta"><span><i class="ph ph-map-pin"></i> Salvador, BA</span><span>78 avaliações</span></div>
+                        </div>
+                    </a>
+                    <a href="perfil.html" class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=280&fit=crop&q=80" alt="Fernando Silva">
+                            <div class="pro-rating"><i class="ph-fill ph-star" style="color: var(--secondary-color);"></i> 4.6</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Fernando Silva</h3>
+                            <p class="pro-role">Luthier - Violinos</p>
+                            <div class="pro-meta"><span><i class="ph ph-map-pin"></i> Porto Alegre, RS</span><span>35 avaliações</span></div>
+                        </div>
+                    </a>
+                    <a href="perfil.html" class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=280&fit=crop&q=80" alt="Beatriz Lima">
+                            <div class="pro-rating"><i class="ph-fill ph-star" style="color: var(--secondary-color);"></i> 5.0</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Beatriz Lima</h3>
+                            <p class="pro-role">Técnica de Som - Eventos</p>
+                            <div class="pro-meta"><span><i class="ph ph-map-pin"></i> Recife, PE</span><span>91 avaliações</span></div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="pagination-container">
+                    <button class="page-link"><i class="ph ph-caret-left"></i></button>
+                    <button class="page-link active">1</button>
+                    <button class="page-link">2</button>
+                    <button class="page-link">3</button>
+                    <button class="page-link"><i class="ph ph-caret-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <a href="../index.html">
+                            <img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station">
+                        </a>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.95rem;">Conectando clientes, profissionais e empresas do universo musical.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navegação</h3>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="profissionais.html">Profissionais</a></li>
+                        <li><a href="instrumentos.html">Instrumentos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Institucional</h3>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de uso</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="contato.html">Fale Conosco</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Music Station. Todos os direitos reservados.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-btn"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#" class="social-btn"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="#" class="social-btn"><i class="ph ph-youtube-logo"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/auth-simulator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get('q');
+            if (query) {
+                const term = query.toLowerCase();
+                const cards = document.querySelectorAll('.pro-card');
+                let visibleCount = 0;
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const role = card.querySelector('.pro-role').textContent.toLowerCase();
+                    if (title.includes(term) || role.includes(term)) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                document.querySelector('.results-header strong').textContent = visibleCount;
+            }
+        });
+    </script>
+    <script src="../js/interactions.js"></script>
+</body>
+</html>
+

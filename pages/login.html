@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar | Music Station</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg\+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="auth-body">
+
+    <nav class="container nav-bar">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station">
+            </a>
+        </div>
+        
+        <ul class="menu-principal">
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="profissionais.html">Profissionais</a></li>
+            <li><a href="instrumentos.html">Instrumentos</a></li>
+            <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+        </ul>
+
+        <div class="botoes-auth">
+            <a href="login.html" class="btn-link active" style="color: var(--primary-light);">Entrar</a>
+            <a href="cadastro.html" class="btn-primary">Criar Conta</a>
+        </div>
+    </nav>
+
+    <div class="auth-layout">
+        <!-- PAINEL ESQUERDO - Branding -->
+        <div class="auth-brand-panel login-brand-panel">
+            <div class="auth-brand-content">
+
+                <div class="auth-brand-text">
+                    <h1>Bem-vindo de volta ao <span class="highlight">universo musical</span></h1>
+                    <p>Acesse sua conta para encontrar profissionais, alugar instrumentos e gerenciar seus serviços.</p>
+                </div>
+
+                <div class="auth-brand-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">760+</span>
+                        <span class="stat-desc">Profissionais</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">12k+</span>
+                        <span class="stat-desc">Serviços</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">4.9</span>
+                        <span class="stat-desc">Avaliação</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decoração sutil -->
+            <div class="auth-brand-decor">
+                <div class="decor-circle decor-1"></div>
+                <div class="decor-circle decor-2"></div>
+            </div>
+        </div>
+
+        <!-- PAINEL DIREITO - Formulário -->
+        <div class="auth-form-panel">
+            <div class="auth-form-container">
+                <!-- Logo mobile (aparece só em telas menores) -->
+                <a href="../index.html" class="logo auth-mobile-logo">
+                    <img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station">
+                </a>
+
+                <div class="auth-form-header">
+                    <h2>Entrar na sua conta</h2>
+                    <p>Digite suas credenciais para acessar a plataforma.</p>
+                </div>
+
+                <form class="auth-form">
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <div class="input-icon-wrapper">
+                            <i class="ph ph-envelope-simple"></i>
+                            <input type="email" id="email" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label for="senha">Senha</label>
+                            <a href="#" class="forgot-link">Esqueci minha senha</a>
+                        </div>
+                        <div class="input-icon-wrapper">
+                            <i class="ph ph-lock-simple"></i>
+                            <input type="password" id="senha" placeholder="Mínimo 6 caracteres" minlength="6" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full">
+                        Entrar <i class="ph ph-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="auth-divider">
+                    <span>ou continue com</span>
+                </div>
+
+                <div class="social-auth-buttons">
+                    <button class="btn-social"><i class="ph ph-google-logo"></i> Google</button>
+                    <button class="btn-social"><i class="ph ph-facebook-logo"></i> Facebook</button>
+                </div>
+
+                <p class="auth-switch">
+                    Ainda não tem uma conta? <a href="cadastro.html">Criar conta</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth-simulator.js"></script>
+    <script>
+        document.querySelector('.auth-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('email').value;
+            const senhaInput = document.getElementById('senha').value;
+            
+            const regEmail = localStorage.getItem('registered_email');
+            const regSenha = localStorage.getItem('registered_password');
+            const regRole = localStorage.getItem('registered_role') || 'cliente';
+            
+            if (regEmail && emailInput === regEmail && senhaInput === regSenha) {
+                doLogin(regRole);
+                window.location.href = 'sucesso.html?type=login';
+            } else {
+                alert('Acesso negado: Credenciais inválidas ou conta não encontrada! Dica: Crie uma conta primeiro.');
+            }
+        });
+    </script>
+    <script src="../js/interactions.js"></script>
+</body>
+</html>
+

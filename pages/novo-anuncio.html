@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Anúncio | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/forms.css">
+</head>
+<body>
+    <header style="border-bottom: 1px solid var(--border-color); background: var(--bg-color);">
+        <nav class="container nav-bar">
+            <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station"></a></div>
+            <ul class="menu-principal">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="profissionais.html">Profissionais</a></li>
+                <li><a href="instrumentos.html">Instrumentos</a></li>
+            </ul>
+            <div class="botoes-auth"></div>
+        </nav>
+    </header>
+
+    <main class="container form-container">
+        <a href="meus-anuncios.html" class="back-link"><i class="ph ph-arrow-left"></i> Voltar</a>
+        <h1 style="font-size: 2rem; margin-top: 1rem;">Cadastrar Novo Instrumento</h1>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">Crie um anúncio de locação para a sua loja ou acervo pessoal.</p>
+
+        <div class="form-card">
+            <h2 style="font-size: 1.3rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">Informações do Equipamento</h2>
+            
+            <div class="form-group" style="margin-bottom: 2rem;">
+                <label>Fotos do Instrumento</label>
+                <div class="upload-area">
+                    <i class="ph ph-camera-plus"></i>
+                    <p style="font-weight: bold; margin-bottom: 0.5rem;">Clique para fazer upload</p>
+                    <p style="font-size: 0.85rem;">ou arraste e solte as imagens aqui. Formatos: JPG, PNG (Max 5MB)</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Título do Anúncio</label>
+                <input type="text" placeholder="Ex: Guitarra Fender Stratocaster Americana">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Categoria</label>
+                    <select>
+                        <option>Cordas</option>
+                        <option>Teclas</option>
+                        <option>Sopro</option>
+                        <option>Percussão</option>
+                        <option>Áudio e Gravação</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Condição</label>
+                    <select>
+                        <option>Novo</option>
+                        <option>Seminovo (Excelente estado)</option>
+                        <option>Usado (Marcas de uso leves)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Descrição Detalhada</label>
+                <textarea rows="5" placeholder="Descreva as especificações, captadores, histórico de manutenções e o que acompanha o instrumento..."></textarea>
+            </div>
+
+            <h2 style="font-size: 1.3rem; margin-bottom: 2rem; margin-top: 3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">Valores e Regras</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Valor da Diária (R$)</label>
+                    <input type="number" placeholder="Ex: 50">
+                </div>
+                <div class="form-group">
+                    <label>Valor da Caução (R$)</label>
+                    <input type="number" placeholder="Ex: 500 (Valor retido em caso de sinistro)">
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 3rem; justify-content: flex-end;">
+                <a href="meus-anuncios.html" class="btn-link">Cancelar</a>
+                <button class="btn-primary" onclick="salvarAnuncio()"><i class="ph ph-check"></i> Publicar Anúncio</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/auth-simulator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Requer estar logado para acessar (Modelo Híbrido: Cliente, Profissional ou Empresa)
+            requireAuth();
+        });
+
+        function salvarAnuncio() {
+            showToast('Anúncio criado com sucesso! Redirecionando...');
+            setTimeout(() => {
+                window.location.href = 'meus-anuncios.html?created=true';
+            }, 2000);
+        }
+    </script>
+    <script src="../js/interactions.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,551 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Station | Conecte-se ao Universo Musical</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg\+xml" href="assets/images/favicon1.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="container nav-bar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/music-station-vetorizada.png" alt="Logo Music Station">
+                </a>
+            </div>
+
+            <ul class="menu-principal">
+                <li><a href="index.html" class="active">Início</a></li>
+                <li><a href="pages/servicos.html">Serviços</a></li>
+                <li><a href="pages/profissionais.html">Profissionais</a></li>
+                <li><a href="pages/instrumentos.html">Instrumentos</a></li>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+            </ul>
+
+            <div class="botoes-auth">
+                <a href="pages/login.html" class="btn-link">Entrar</a>
+                <a href="pages/cadastro.html" class="btn-primary">Criar Conta</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="container hero-container">
+                <div class="hero-text">
+                    <div class="badge-pill">
+                        <i class="ph ph-sparkle"></i> Plataforma musical completa
+                    </div>
+                    <h1>
+                        Conecte-se ao
+                        <span class="highlight">universo musical</span>
+                    </h1>
+                    <p>
+                        Encontre aulas, manutenção de instrumentos, técnicos de som e equipamentos para locação em uma
+                        única plataforma. Feito para clientes, profissionais e empresas.
+                    </p>
+                    <div class="hero-buttons">
+                        <a class="btn-primary" href="pages/servicos.html">
+                            <i class="ph ph-magnifying-glass"></i> Buscar serviços
+                        </a>
+                        <a class="btn-secondary" href="pages/instrumentos.html">Alugar instrumentos</a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-num">760+</span>
+                            <span class="stat-desc">Profissionais ativos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">12k+</span>
+                            <span class="stat-desc">Serviços realizados</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">4.9</span>
+                            <span class="stat-desc">Avaliação média</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <div class="hero-image-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=550&fit=crop&q=80"
+                        alt="Headphones Music Station" class="hero-float">
+                </div>
+            </div>
+        </section>
+
+        <!-- BUSCA GERAL -->
+        <section class="search-section">
+            <div class="container">
+                <form class="search-bar" id="mainSearchForm" onsubmit="event.preventDefault(); submitMainSearch();">
+                    <div class="search-input">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <input type="text" id="mainSearchInput" placeholder="O que você procura?">
+                    </div>
+                    <div class="search-divider"></div>
+                    <div class="search-category">
+                        <select id="mainSearchCategory">
+                            <option value="servicos">Serviços</option>
+                            <option value="instrumentos">Instrumentos</option>
+                            <option value="profissionais">Profissionais</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="ph ph-magnifying-glass"></i> Buscar</button>
+                </form>
+            </div>
+        </section>
+        <script>
+            function submitMainSearch() {
+                const query = document.getElementById('mainSearchInput').value;
+                const cat = document.getElementById('mainSearchCategory').value;
+                if (cat === 'servicos') {
+                    window.location.href = 'pages/servicos.html?q=' + encodeURIComponent(query);
+                } else if (cat === 'instrumentos') {
+                    window.location.href = 'pages/instrumentos.html?q=' + encodeURIComponent(query);
+                } else {
+                    window.location.href = 'pages/profissionais.html?q=' + encodeURIComponent(query);
+                }
+            }
+        </script>
+
+        <!-- CATEGORIAS -->
+        <section class="categories section-padding" id="servicos">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">CATEGORIAS</span>
+                    <h2>Explore os serviços disponíveis</h2>
+                    <p>Da manutenção do seu instrumento às aulas com professores especializados, encontre tudo o que
+                        precisa para sua jornada musical.</p>
+                </div>
+
+                <div class="category-grid">
+                    <a href="pages/servico.html" class="category-card">
+                        <div class="card-icon"><i class="ph ph-wrench"></i></div>
+                        <h3>Manutenção e Reparo</h3>
+                        <p>Conserto de guitarras, violões, baixos e instrumentos de corda em geral.</p>
+                        <div class="card-footer">
+                            <span>142 profissionais</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </div>
+                    </a>
+
+                    <a href="pages/servicos.html" class="category-card">
+                        <div class="card-icon"><i class="ph ph-graduation-cap"></i></div>
+                        <h3>Aulas de Música</h3>
+                        <p>Professores particulares para diversos instrumentos e estilos musicais.</p>
+                        <div class="card-footer">
+                            <span>318 profissionais</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </div>
+                    </a>
+
+                    <a href="pages/servicos.html" class="category-card">
+                        <div class="card-icon"><i class="ph ph-microphone-stage"></i></div>
+                        <h3>Técnicos de Som</h3>
+                        <p>Profissionais para gravação, mixing, mastering e eventos ao vivo.</p>
+                        <div class="card-footer">
+                            <span>87 profissionais</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </div>
+                    </a>
+
+                    <a href="pages/instrumentos.html" class="category-card">
+                        <div class="card-icon"><i class="ph ph-guitar"></i></div>
+                        <h3>Aluguel de Instrumentos</h3>
+                        <p>Empresas e profissionais com instrumentos disponíveis para locação.</p>
+                        <div class="card-footer">
+                            <span>96 empresas</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </div>
+                    </a>
+
+                    <a href="pages/servicos.html" class="category-card">
+                        <div class="card-icon"><i class="ph ph-headphones"></i></div>
+                        <h3>Produção Musical</h3>
+                        <p>Produtores e estúdios para dar vida às suas composições.</p>
+                        <div class="card-footer">
+                            <span>64 estúdios</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </div>
+                    </a>
+
+                    <a href="pages/servicos.html" class="category-card">
+                        <div class="card-icon"><i class="ph ph-sliders"></i></div>
+                        <h3>Afinação e Setup</h3>
+                        <p>Afinadores especializados e setup completo para o seu instrumento.</p>
+                        <div class="card-footer">
+                            <span>53 profissionais</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSTRUMENTOS PARA ALUGAR -->
+        <section class="instruments-section section-padding" id="instrumentos">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">ALUGUEL</span>
+                    <h2>Instrumentos para alugar</h2>
+                    <p>Encontre o equipamento perfeito para o seu próximo show ou gravação.</p>
+                </div>
+
+                <div class="pros-grid">
+                    <div class="pro-card" onclick="window.location.href='pages/instrumento.html'">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1550985616-10810253b84d?w=400&h=280&fit=crop&q=80"
+                                alt="Guitarra Fender Stratocaster">
+                            <div class="pro-rating badge-available">Disponível</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Guitarra Fender Stratocaster</h3>
+                            <p class="pro-role">SoundHouse <i class="ph-fill ph-seal-check verified-badge"
+                                    title="Empresa Verificada"></i></p>
+                            <div class="instrument-price">
+                                <span class="price">R$ 45<span class="price-unit">/dia</span></span>
+                                <a href="pages/instrumento.html" class="btn-primary btn-sm">Alugar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pro-card" onclick="window.location.href='pages/instrumento.html'">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1524230659092-07f99a75c013?w=400&h=280&fit=crop&q=80"
+                                alt="Bateria Acústica Pearl">
+                            <div class="pro-rating badge-available">Disponível</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Bateria Acústica Pearl</h3>
+                            <p class="pro-role">Ritmo Music <i class="ph-fill ph-seal-check verified-badge"
+                                    title="Empresa Verificada"></i></p>
+                            <div class="instrument-price">
+                                <span class="price">R$ 120<span class="price-unit">/dia</span></span>
+                                <a href="pages/instrumento.html" class="btn-primary btn-sm">Alugar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pro-card" onclick="window.location.href='pages/instrumento.html'">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?w=400&h=280&fit=crop&q=80"
+                                alt="Teclado Yamaha PSR">
+                            <div class="pro-rating badge-unavailable">Indisponível</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Teclado Yamaha PSR</h3>
+                            <p class="pro-role" style="color: var(--text-main);">Rafael Mendes (Luthier)</p>
+                            <div class="instrument-price">
+                                <span class="price">R$ 35<span class="price-unit">/dia</span></span>
+                                <a href="#" class="btn-secondary btn-sm btn-disabled">Alugar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pro-card" onclick="window.location.href='pages/instrumento.html'">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=400&h=280&fit=crop&q=80"
+                                alt="Violão Taylor 214ce">
+                            <div class="pro-rating badge-available">Disponível</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Violão Taylor 214ce</h3>
+                            <p class="pro-role">Acústica Pro <i class="ph-fill ph-seal-check verified-badge"
+                                    title="Empresa Verificada"></i></p>
+                            <div class="instrument-price">
+                                <span class="price">R$ 55<span class="price-unit">/dia</span></span>
+                                <a href="pages/instrumento.html" class="btn-primary btn-sm">Alugar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="pages/instrumentos.html" class="btn-secondary">Ver mais instrumentos <i
+                            class="ph ph-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAÇA PARTE -->
+        <section class="join-section section-padding">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">PARA TODOS</span>
+                    <h2>Faça parte da Music Station</h2>
+                    <p>Seja qual for o seu perfil, há um espaço para você na plataforma.</p>
+                </div>
+
+                <div class="join-grid">
+                    <div class="category-card join-card" style="cursor: pointer;"
+                        onclick="window.location.href='pages/cadastro.html?profile=cliente'">
+                        <div class="card-icon"><i class="ph ph-users"></i></div>
+                        <h3>Para Clientes</h3>
+                        <p>Encontre serviços musicais confiáveis perto de você, compare preços e contrate com segurança.
+                        </p>
+                        <ul class="join-features">
+                            <li><i class="ph-fill ph-check-circle"></i> Busca por categoria e região</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Avaliações reais</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Chat direto com o profissional</li>
+                        </ul>
+                        <a href="pages/cadastro.html" class="btn-link">Buscar serviços <i
+                                class="ph ph-arrow-right"></i></a>
+                    </div>
+
+                    <div class="category-card join-card" style="cursor: pointer;"
+                        onclick="window.location.href='pages/cadastro.html?profile=profissional'">
+                        <div class="card-icon"><i class="ph ph-briefcase"></i></div>
+                        <h3>Para Profissionais</h3>
+                        <p>Divulgue seu trabalho para milhares de clientes e amplie sua carteira de forma profissional.
+                        </p>
+                        <ul class="join-features">
+                            <li><i class="ph-fill ph-check-circle"></i> Perfil personalizado</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Gestão de agenda</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Receba pagamentos com segurança</li>
+                        </ul>
+                        <a href="pages/cadastro.html" class="btn-link">Cadastrar perfil <i
+                                class="ph ph-arrow-right"></i></a>
+                    </div>
+
+                    <div class="category-card join-card" style="cursor: pointer;"
+                        onclick="window.location.href='pages/cadastro.html?profile=empresa'">
+                        <div class="card-icon"><i class="ph ph-storefront"></i></div>
+                        <h3>Para Empresas</h3>
+                        <p>Anuncie seus instrumentos para aluguel e alcance um público qualificado em todo o país.</p>
+                        <ul class="join-features">
+                            <li><i class="ph-fill ph-check-circle"></i> Catálogo de instrumentos</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Painel de gestão</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Relatórios de locação</li>
+                        </ul>
+                        <a href="pages/cadastro.html" class="btn-link">Anunciar instrumentos <i
+                                class="ph ph-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMO FUNCIONA -->
+        <section class="how-it-works section-padding" id="como-funciona">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">SIMPLES E RÃPIDO</span>
+                    <h2>Como funciona</h2>
+                    <p>Três passos para encontrar o serviço musical ideal.</p>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-icon-wrapper">
+                            <div class="step-number">01</div>
+                            <div class="step-icon"><i class="ph ph-magnifying-glass"></i></div>
+                        </div>
+                        <h3>Pesquise</h3>
+                        <p>Busque por serviço, instrumento ou profissional na sua região.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon-wrapper">
+                            <div class="step-number">02</div>
+                            <div class="step-icon"><i class="ph ph-envelope-simple"></i></div>
+                        </div>
+                        <h3>Contate</h3>
+                        <p>Converse com o profissional ou empresa pelo chat da plataforma.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon-wrapper">
+                            <div class="step-number">03</div>
+                            <div class="step-icon"><i class="ph ph-check-circle"></i></div>
+                        </div>
+                        <h3>Contrate</h3>
+                        <p>Combine valores, datas e contrate o serviço com segurança.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFISSIONAIS EM DESTAQUE -->
+        <section class="featured-pros section-padding" id="profissionais">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">DESTAQUE</span>
+                    <h2>Profissionais recomendados</h2>
+                </div>
+
+                <div class="pros-grid">
+                    <div class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=280&fit=crop&q=80"
+                                alt="Rafael Mendes">
+                            <div class="pro-rating"><i class="ph-fill ph-star"
+                                    style="color: var(--secondary-color);"></i> 4.9</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Rafael Mendes</h3>
+                            <p class="pro-role">Luthier - Guitarras e Baixos</p>
+                            <div class="pro-meta">
+                                <span><i class="ph ph-map-pin"></i> São Paulo, SP</span>
+                                <span>127 avaliações</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=280&fit=crop&q=80"
+                                alt="Carla Nogueira">
+                            <div class="pro-rating"><i class="ph-fill ph-star"
+                                    style="color: var(--secondary-color);"></i> 5.0</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Carla Nogueira</h3>
+                            <p class="pro-role">Professora de Piano e Teoria</p>
+                            <div class="pro-meta">
+                                <span><i class="ph ph-map-pin"></i> Rio de Janeiro, RJ</span>
+                                <span>89 avaliações</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=280&fit=crop&q=80"
+                                alt="Diego Ferreira">
+                            <div class="pro-rating"><i class="ph-fill ph-star"
+                                    style="color: var(--secondary-color);"></i> 4.8</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Diego Ferreira</h3>
+                            <p class="pro-role">Técnico de Som - Estúdio</p>
+                            <div class="pro-meta">
+                                <span><i class="ph ph-map-pin"></i> Belo Horizonte, MG</span>
+                                <span>64 avaliações</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pro-card">
+                        <div class="pro-image">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=280&fit=crop&q=80"
+                                alt="Juliana Rocha">
+                            <div class="pro-rating"><i class="ph-fill ph-star"
+                                    style="color: var(--secondary-color);"></i> 4.9</div>
+                        </div>
+                        <div class="pro-info">
+                            <h3>Juliana Rocha</h3>
+                            <p class="pro-role">Professora de Violão</p>
+                            <div class="pro-meta">
+                                <span><i class="ph ph-map-pin"></i> Curitiba, PR</span>
+                                <span>102 avaliações</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="pages/profissionais.html" class="btn-secondary">Ver mais profissionais <i
+                            class="ph ph-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIAL -->
+        <section class="testimonial-section section-padding">
+            <div class="container text-center">
+                <div class="testimonial-content">
+                    <div class="testimonial-stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <blockquote class="testimonial-text">
+                        "Encontrei um luthier excelente para o meu violão em menos de um dia. A plataforma é simples e o
+                        atendimento foi rápido. Recomendo demais!"
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150&h=150&fit=crop&q=80"
+                            alt="Marina Souza">
+                        <div class="author-info">
+                            <strong>Marina Souza</strong>
+                            <span>Cliente - São Paulo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTATO -->
+        <section class="contact-section section-padding" id="contato">
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/images/music-station-vetorizada.png" alt="Logo Music Station">
+                        </a>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.95rem;">Conectando clientes, profissionais e empresas do
+                        universo musical.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Navegação</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="pages/servicos.html">Serviços</a></li>
+                        <li><a href="pages/profissionais.html">Profissionais</a></li>
+                        <li><a href="pages/instrumentos.html">Instrumentos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Institucional</h3>
+                    <ul>
+                        <li><a href="pages/sobre.html">Sobre Nós</a></li>
+                        <li><a href="pages/termos.html">Termos de uso</a></li>
+                        <li><a href="pages/privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="pages/ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="pages/contato.html">Fale Conosco</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Music Station. Todos os direitos reservados.</p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/musicstation" target="_blank" rel="noopener noreferrer"
+                        class="social-btn">
+                        <i class="ph ph-instagram-logo"></i>
+                    </a>
+                    <a href="https://facebook.com/musicstation" target="_blank" rel="noopener noreferrer"
+                        class="social-btn">
+                        <i class="ph ph-facebook-logo"></i>
+                    </a>
+                    <a href="https://youtube.com/musicstation" target="_blank" rel="noopener noreferrer"
+                        class="social-btn">
+                        <i class="ph ph-youtube-logo"></i>
+                    </a>
+                </div>
+            </div>
+    </footer>
+    <script src="js/auth-simulator.js"></script>
+    <script src="js/interactions.js"></script>
+</body>
+
+</html>

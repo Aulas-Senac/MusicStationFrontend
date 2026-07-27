@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg\+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/chat.css">
+</head>
+
+<body class="chat-layout">
+    <!-- Header com navega��o padr�o -->
+    <header style="border-bottom: 1px solid var(--border-color); background: var(--bg-color);">
+        <nav class="container nav-bar">
+            <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png"
+                        alt="Logo Music Station"></a></div>
+            <ul class="menu-principal">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="profissionais.html">Profissionais</a></li>
+                <li><a href="instrumentos.html">Instrumentos</a></li>
+            </ul>
+            <div class="botoes-auth"></div>
+        </nav>
+    </header>
+
+    <main class="container chat-container">
+        <!-- Sidebar -->
+        <aside class="chat-sidebar">
+            <div class="chat-sidebar-header"
+                style="display: flex; align-items: center; justify-content: space-between;">
+                <h2>Mensagens</h2>
+                <a href="javascript:history.back()" class="btn-link"
+                    style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; padding: 0.4rem 0.8rem; background: var(--bg-color); border-radius: 8px; border: 1px solid var(--border-color); transition: all 0.2s ease;">
+                    <i class="ph ph-arrow-left"></i> Voltar
+                </a>
+            </div>
+            <div class="chat-list">
+                <div class="chat-list-item active" id="item-soundhouse" onclick="switchChat('soundhouse')">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=60&h=60&fit=crop&q=80"
+                        alt="SoundHouse SP" class="chat-avatar">
+                    <div style="flex-grow: 1; overflow: hidden;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                            <strong style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SoundHouse
+                                SP</strong>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Agora</span>
+                        </div>
+                        <p
+                            style="font-size: 0.85rem; color: var(--text-muted); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            Obrigado! Pode realizar o pagamento.</p>
+                    </div>
+                </div>
+                <div class="chat-list-item" id="item-rafael" onclick="switchChat('rafael')">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&q=80"
+                        alt="Rafael Mendes" class="chat-avatar">
+                    <div style="flex-grow: 1; overflow: hidden;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                            <strong style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Rafael
+                                Mendes</strong>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Ontem</span>
+                        </div>
+                        <p
+                            style="font-size: 0.85rem; color: var(--text-muted); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            Marcado para quinta-feira às 10h. Te aguardo!</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <section class="chat-main" id="chat-soundhouse">
+            <div class="chat-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=60&h=60&fit=crop&q=80"
+                        alt="SoundHouse SP" class="chat-avatar">
+                    <div>
+                        <strong style="display: block; font-size: 1.1rem;">SoundHouse SP</strong>
+                        <span style="font-size: 0.85rem; color: var(--primary-light);">Online agora</span>
+                    </div>
+                </div>
+                <div>
+                    <a href="instrumento.html"
+                        style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;"><i
+                            class="ph ph-arrow-square-out"></i> Ver anuncio</a>
+                </div>
+            </div>
+
+            <div class="chat-messages">
+                <div class="msg-system">Você iniciou uma solicitação de aluguel.</div>
+
+                <div class="msg-bubble msg-sent">
+                    Olá! Gostaria de alugar a Guitarra Fender Stratocaster para o final de semana (10 a 12 de Agosto).
+                    Vou retirar lá na loja.
+                    <span class="msg-time">10:42 AM</span>
+                </div>
+
+                <div class="msg-bubble msg-received">
+                    <div
+                        style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; color: var(--primary-light); font-weight: 600;">
+                        <i class="ph-fill ph-seal-check"></i> Empresa Verificada
+                    </div>
+                    Olá! Claro, a guitarra está disponível nessas datas. O valor total fica R$ 135 (3 diárias) + R$ 500
+                    de caução. A caução é estornada na devolução. Posso aprovar o pedido?
+                    <span class="msg-time">10:45 AM</span>
+                </div>
+
+                <div class="msg-bubble msg-sent">
+                    Perfeito, pode aprovar sim. Qual o horário de funcionamento de vocês no sábado para eu retirar?
+                    <span class="msg-time">10:47 AM</span>
+                </div>
+
+                <div class="msg-bubble msg-received">
+                    Abrimos das 09h às 14h aos sábados. Acabei de aprovar o pedido no sistema, você já pode realizar o
+                    pagamento para garantir a reserva!
+                    <span class="msg-time">Agora</span>
+                </div>
+
+                <!-- Card de A��o (Aprova��o) -->
+                <div class="chat-action-card">
+                    <i class="ph-fill ph-check-circle"
+                        style="font-size: 3rem; color: #22c55e; margin-bottom: 1rem;"></i>
+                    <h3 style="margin-bottom: 0.5rem;">Reserva Aprovada</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">A loja SoundHouse SP
+                        confirmou a disponibilidade. Realize o pagamento seguro pela Music Station para concluir a
+                        reserva.</p>
+                    <a href="checkout.html" class="btn-primary" style="width: 100%; justify-content: center;">Pagar R$
+                        135</a>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <i class="ph ph-paperclip" style="font-size: 1.5rem; color: var(--text-muted); cursor: pointer;"></i>
+                <input type="text" placeholder="Digite uma mensagem...">
+                <button class="chat-send-btn"><i class="ph-fill ph-paper-plane-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Main Chat Area RAFAEL -->
+        <section class="chat-main" id="chat-rafael" style="display: none;">
+            <div class="chat-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&q=80"
+                        alt="Rafael Mendes" class="chat-avatar">
+                    <div>
+                        <strong style="display: block; font-size: 1.1rem;">Rafael Mendes</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Visto por último hoje às
+                            08:30</span>
+                    </div>
+                </div>
+                <div>
+                    <a href="servico.html"
+                        style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;"><i
+                            class="ph ph-arrow-square-out"></i> Ver serviço</a>
+                </div>
+            </div>
+
+            <div class="chat-messages">
+                <div class="msg-system">Você contratou o serviço: Regulagem Completa Luthieria</div>
+
+                <div class="msg-bubble msg-sent">
+                    Bom dia Rafael, tudo bem? Queria levar meu violão amanhã de manhã, você tem algum horário
+                    disponível?
+                    <span class="msg-time">Ontem, 09:15 AM</span>
+                </div>
+
+                <div class="msg-bubble msg-received">
+                    <div
+                        style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; color: var(--primary-light); font-weight: 600;">
+                        <i class="ph-fill ph-seal-check"></i> Profissional Verificado
+                    </div>
+                    Bom dia! Tudo bem. Tenho um horário livre amanhã às 10h da manhã. Fica bom pra você?
+                    <span class="msg-time">Ontem, 09:30 AM</span>
+                </div>
+
+                <div class="msg-bubble msg-sent">
+                    Fica excelente! Estarei lá às 10h em ponto. Muito obrigado!
+                    <span class="msg-time">Ontem, 09:45 AM</span>
+                </div>
+
+                <div class="msg-bubble msg-received">
+                    Combinado. Marcado para quinta às 10h. Te aguardo!
+                    <span class="msg-time">Ontem, 10:00 AM</span>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <i class="ph ph-paperclip" style="font-size: 1.5rem; color: var(--text-muted); cursor: pointer;"></i>
+                <input type="text" placeholder="Digite uma mensagem...">
+                <button class="chat-send-btn"><i class="ph-fill ph-paper-plane-right"></i></button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Auth Simulator Invis�vel -->
+    <script src="../js/auth-simulator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('chat') === 'rafael') {
+                switchChat('rafael');
+            }
+        });
+
+        function switchChat(chatId) {
+            document.querySelectorAll('.chat-list-item').forEach(el => el.classList.remove('active'));
+            document.getElementById('item-' + chatId).classList.add('active');
+
+            document.getElementById('chat-soundhouse').style.display = 'none';
+            document.getElementById('chat-rafael').style.display = 'none';
+
+            document.getElementById('chat-' + chatId).style.display = 'flex';
+        }
+    </script>
+    <script src="../js/interactions.js"></script>
+</body>
+
+</html>

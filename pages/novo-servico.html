@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Serviço | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/forms.css">
+</head>
+<body>
+    <header style="border-bottom: 1px solid var(--border-color); background: var(--bg-color);">
+        <nav class="container nav-bar">
+            <div class="logo"><a href="../index.html"><img src="../assets/images/music-station-vetorizada.png" alt="Logo Music Station"></a></div>
+            <ul class="menu-principal">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="profissionais.html">Profissionais</a></li>
+                <li><a href="instrumentos.html">Instrumentos</a></li>
+            </ul>
+            <div class="botoes-auth"></div>
+        </nav>
+    </header>
+
+    <main class="container form-container">
+        <a href="meus-itens.html" class="back-link"><i class="ph ph-arrow-left"></i> Voltar</a>
+        <h1 style="font-size: 2rem; margin-top: 1rem;">Cadastrar Novo Serviço</h1>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">Ofereça sua mão de obra especializada para outros músicos.</p>
+
+        <div class="form-card">
+            <h2 style="font-size: 1.3rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">Detalhes do Serviço</h2>
+            
+            <div class="form-group" style="margin-bottom: 2rem;">
+                <label>Foto da Capa do Serviço</label>
+                <div class="upload-area">
+                    <i class="ph ph-image"></i>
+                    <p style="font-weight: bold; margin-bottom: 0.5rem;">Clique para fazer upload</p>
+                    <p style="font-size: 0.85rem;">Mostre o seu local de trabalho ou um serviço concluído (Max 5MB)</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Título do Serviço</label>
+                <input type="text" placeholder="Ex: Regulagem Completa para Violão Clássico">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Especialidade</label>
+                    <select>
+                        <option>Luthieria</option>
+                        <option>Eletrônica (Amps e Pedais)</option>
+                        <option>Afinação de Pianos</option>
+                        <option>Mixagem / Masterização</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Prazo Médio de Entrega</label>
+                    <select>
+                        <option>No mesmo dia</option>
+                        <option>1 a 3 dias úteis</option>
+                        <option>1 semana</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Descrição do Trabalho</label>
+                <textarea rows="5" placeholder="Descreva exatamente o que está incluso no serviço, materiais utilizados e garantias oferecidas..."></textarea>
+            </div>
+
+            <h2 style="font-size: 1.3rem; margin-bottom: 2rem; margin-top: 3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">Precificação</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Valor Fixo Base (R$)</label>
+                    <input type="number" placeholder="Ex: 120">
+                </div>
+                <div class="form-group">
+                    <label>O valor é flexível?</label>
+                    <select>
+                        <option>Não, valor fixo.</option>
+                        <option>Sim, a partir deste valor (combinado no chat).</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 3rem; justify-content: flex-end;">
+                <a href="meus-itens.html" class="btn-link">Cancelar</a>
+                <button class="btn-primary" onclick="salvarServico()"><i class="ph ph-check"></i> Publicar Serviço</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/auth-simulator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Requer login de Profissional para acessar
+            requireAuth('profissional');
+        });
+
+        function salvarServico() {
+            showToast('Serviço cadastrado com sucesso! Redirecionando...');
+            setTimeout(() => {
+                window.location.href = 'meus-itens.html?created=true';
+            }, 2000);
+        }
+    </script>
+    <script src="../js/interactions.js"></script>
+</body>
+</html>
+

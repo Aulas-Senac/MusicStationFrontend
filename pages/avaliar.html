@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliar Serviço | Music Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/forms.css">
+</head>
+<body class="review-page">
+
+    <div class="review-modal">
+        <a href="painel.html" class="close-btn"><i class="ph ph-x"></i></a>
+        
+        <h2>Como foi sua experiência?</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem;">Sua avaliação ajuda outros músicos da comunidade.</p>
+        
+        <div class="service-info">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&q=80" alt="Rafael Mendes">
+            <div style="text-align: left;">
+                <strong style="display: block;">Regulagem de Baixo</strong>
+                <span style="font-size: 0.85rem; color: var(--primary-light);">Com Rafael Mendes</span>
+            </div>
+        </div>
+
+        <div class="stars-container" id="stars">
+            <i class="ph-fill ph-star active"></i>
+            <i class="ph-fill ph-star active"></i>
+            <i class="ph-fill ph-star active"></i>
+            <i class="ph-fill ph-star active"></i>
+            <i class="ph-fill ph-star active"></i>
+        </div>
+
+        <textarea class="review-text" placeholder="Deixe um comentário sobre o serviço prestado (opcional)..."></textarea>
+
+        <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="submitReview()">
+            Enviar Avaliação <i class="ph ph-paper-plane-right"></i>
+        </button>
+    </div>
+
+    <!-- Script de Auth apenas para carregar o toast system se precisar -->
+    <script src="../js/auth-simulator.js"></script>
+    <script>
+        // Lógica simples visual de estrelas
+        const stars = document.querySelectorAll('#stars i');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                stars.forEach((s, i) => {
+                    if (i <= index) s.classList.add('active');
+                    else s.classList.remove('active');
+                });
+            });
+        });
+
+        function submitReview() {
+            showToast("Avaliação enviada com sucesso! Obrigado.");
+            setTimeout(() => {
+                window.location.href = 'painel.html';
+            }, 1500);
+        }
+    </script>
+    <script src="../js/interactions.js"></script>
+</body>
+</html>
+
+
